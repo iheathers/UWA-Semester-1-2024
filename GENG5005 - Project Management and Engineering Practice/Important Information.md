@@ -29,10 +29,9 @@ Group report  - Week 7
 
 Download book - > 
 
-Carreer Center - : 9 Ð 12 pm . Drop in and ask questions. Ask for guidance . review resume. 
+Carreer Center - : 9 ï¿½ 12 pm . Drop in and ask questions. Ask for guidance . review resume. 
 
-
-Individual Presentation Ð Recorded presentation 
+Individual Presentation ï¿½ Recorded presentation 
 
 
 Prepare for the next class/practical work. 
@@ -40,7 +39,7 @@ Prepare for the next class/practical work.
 
 
 
-Group 5 Ð 
+Group 5 ï¿½ 
 
 
 
@@ -49,5 +48,18 @@ Group 5 Ð
 24299691	Zhang	Kaimin	Practical_Class-01/03	Tue 3pm: Group 5
 24170334	Vien	Duc Huy	Practical_Class-01/03	Tue 3pm: Group 5
 22260596	Hassett	Timothy	Practical_Class-01/03	
+
+
+Refer to previous questions for exams - Questions are repeated .
+
+Lecturer mentions what are to be expected in exams. Take not of that. 
+
+Nishan might have shared the resources earlier - ask for his suggestion/advice
+
+
+### Notes
+
+The links to the (free, online) book chapters and other readings have moved into the Reading List function available under the Unit Readings list. - This is useful resource. 
+- https://www.unitreadings.library.uwa.edu.au/leganto/readinglist/lists/17391146610002101
 
 
