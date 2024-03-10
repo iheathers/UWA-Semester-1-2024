@@ -35,12 +35,9 @@ Common PostgreSQL commands and statements for querying data from tables
 - Query data from a table with a filter
 - Return the number of rows of a table
 
-A.	SELECT COUNT (*) FROM table_name;
-
-B.	SELECT column_list FROM table;
-
-C.	SELECT * FROM table WHERE condition;
-
+A.	SELECT COUNT (*) FROM table_name; \
+B.	SELECT column_list FROM table; \
+C.	SELECT * FROM table WHERE condition; \
 D.	SELECT * FROM table_name;
 
 **Question 6:**
@@ -72,7 +69,6 @@ What happens to the data after the ETL (Extract, Transform, Load) process in the
 **Question 9:**
 
 Which Docker component is responsible for bundling everything needed to run a piece of software, including code, runtime, libraries, environment variables, and config files?
-
 - [ ] Docker Compose.
 - [ ] Docker Container.
 - [ ] Docker Network.
@@ -82,7 +78,6 @@ Which Docker component is responsible for bundling everything needed to run a pi
 **Question 10:**
 
 What is the function of Docker Volumes?
-
 - [ ] To define and run multi-container Docker applications.
 - [ ] To persist the storage of Docker containers.
 - [ ] The execution of a Docker image, the runtime environment.
