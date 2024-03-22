@@ -1,0 +1,2 @@
+- In our lab, we choose to use the most popular open source relational database: PostgreSQL as our tool to store transactional and analytical data. 
+- PostgreSQL is widely used for general purpose OLTP database. 
