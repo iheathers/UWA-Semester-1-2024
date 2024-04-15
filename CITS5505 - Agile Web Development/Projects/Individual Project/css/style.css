@@ -1,0 +1,236 @@
+
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+    -webkit-print-color-adjust: exact;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+@media only screen {
+    body {
+        margin: 2em auto;
+        max-width: 900px;
+        color: rgb(55, 53, 47);
+    }
+}
+
+body {
+    line-height: 1.5;
+    font-family: "Roboto Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    /* white-space: pre-wrap; */
+}
+
+a,
+a.visited {
+    color: inherit;
+    text-decoration: underline;
+}
+
+
+/* .sans {
+    font-family: "Roboto Mono", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+} */
+
+
+
+h1,
+h2,
+h3 {
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+h1 {
+    font-size: 1.875rem;
+    margin-top: 1.875rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+    margin-top: 1.25rem;
+}
+
+
+p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+ol,
+ul {
+    margin: 0;
+    margin-block-start: 0.6em;
+    margin-block-end: 0.6em;
+}
+
+ul>li {
+    list-style: disc;
+}
+
+ul {
+    padding-inline-start: 1.7em;
+}
+
+ul>li {
+    padding-left: 0.1em;
+}
+
+ol {
+    padding-inline-start: 1.6em;
+}
+
+ol>li {
+    padding-left: 0.2em;
+}
+
+figure {
+    margin: 1.25em 0;
+    page-break-inside: avoid;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 0.75em;
+}
+
+.image {
+    border: none;
+    margin: 1.5em 0;
+    padding: 0;
+    border-radius: 0;
+    text-align: center;
+}
+
+.source {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 1.5em;
+    word-break: break-all;
+}
+
+.code,
+code {
+    background: rgba(135, 131, 120, 0.15);
+    border-radius: 3px;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 85%;
+    tab-size: 2;
+}
+
+code {
+    color: #eb5757;
+}
+
+img {
+    max-width: 100%;
+}
+
+@media only print {
+    img {
+        max-height: 100vh;
+        object-fit: contain;
+    }
+}
+
+.code {
+    padding: 1.5em 1em;
+}
+
+.code>code {
+    background: none;
+    padding: 0;
+    font-size: 100%;
+    color: inherit;
+}
+
+.code {
+    font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace;
+}
+
+
+
+.bookmark {
+    text-decoration: none;
+    max-height: 8em;
+    padding: 0;
+    display: flex;
+    width: 100%;
+    align-items: stretch;
+}
+
+.bookmark-title {
+    font-size: 0.85em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 1.75em;
+    white-space: nowrap;
+}
+
+.bookmark-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.bookmark-info {
+    flex: 4 1 180px;
+    padding: 12px 14px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bookmark-image {
+    width: 33%;
+    flex: 1 1 180px;
+    display: block;
+    position: relative;
+    object-fit: cover;
+    border-radius: 1px;
+}
+
+.bookmark-description {
+    color: rgba(55, 53, 47, 0.6);
+    font-size: 0.65em;
+    overflow: hidden;
+    max-height: 4.5em;
+    word-break: break-word;
+}
+
+.bookmark-href {
+    font-size: 0.65em;
+    margin-top: 0.25em;
+}
+
+
+.icon {
+    display: inline-block;
+    max-width: 1.2em;
+    max-height: 1.2em;
+    text-decoration: none;
+    vertical-align: text-bottom;
+    margin-right: 0.5em;
+}
+
+img.icon {
+    border-radius: 3px;
+}
