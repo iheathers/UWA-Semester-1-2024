@@ -1,9 +1,14 @@
+/* Styles specific to the author profile section */
+
+/* Container for the profile, with a set aspect ratio and width, centered on the page */
 .profile_container{
   aspect-ratio: 1/1;
   width: min(400px,90%);
   position: relative;
   margin: auto;
 }
+
+/* Back layer of the profile, with a box shadow for a 3D effect and an animation to rotate it */
 .back{
   position: absolute;
   width: 100%;
@@ -12,47 +17,39 @@
   border-radius: 50%;
   animation: rotate 4s infinite linear;
 }
+
+/* Front layer of the profile, with a background image and a transition for a hover effect */
 .profile{
   border-radius: 50%;
   width: 100%;
   height: 100%;
-  background-image: url(https://avatars.githubusercontent.com/u/34258778?v=4);
+  background-image: url(https://avatars.githubusercontent.com/u/34258778?v=4); /* Image fetched from github */
   background-size: 100%;
   background-position: center;
   transition: all 0.2s ease-in-out;
   position: absolute;
 }
+
+/* Style for the occupation text */
 .occupation{
-color: #8d08d0;
+  color: #8d08d0;
 }
+
+/* Hover effect for the profile, enlarging the background image on hover */
 .profile:hover{
   background-size: 110%;
   box-shadow: 10px 10px 0  #8d08d0 , -10px -10px 0  #ff006f;
 }
+
+/* Center the text in the profile information section */
 .profile_infos{
   text-align: center;
 }
+
+/* Animation to rotate the back layer of the profile */
 @keyframes rotate {
   to{
     transform: rotate(360deg);
   }
 }
 
-.github-input{
-    padding: 8px;
-    width: 200px;
-    margin: 5px;
-    border: 1px solid #8d08d0;
-    border-radius: 5px;
-}
-
-.sub-btn{
-    padding: 8px;
-    width: 100px;
-    margin: 5px;
-    border: 1px solid #8d08d0;
-    border-radius: 5px;
-    background-color: #8d08d0;
-    color: white;
-    cursor: pointer;
-}
