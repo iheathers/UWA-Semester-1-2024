@@ -1,199 +1,176 @@
-  
-  /* Colors */
-:root {
-    --clr-background: ##fff; /* Shakespeare blue */
-    --clr-header: #FFF;
-    --clr-heading: #ffffff;
-    --clr-text: #eaeaea;
-    --clr-timeline: #bebebe;
-    --clr-memoryPoint: #FFF;
-    --clr-memoryPoint-active: #009485;
-    --clr-memory: #009485;
-  }
-  
-  /* Reset */
-  *,
-  *::before,
-  *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+/* General styles for the page header container */
+.page-header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  margin-top: 50px; 
+  background-color: #8d07cf; 
+  padding: 20px; 
+  width: auto; 
+  border-radius: 10px; 
+}
 
-  
-  .placeholder {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .page-header {
-    padding: 10px;
-    /* font-family: 'Patrick Hand SC', cursive; */
-    font-size: 3.5em;
-    text-align: center;
-    color: var(--clr-header);
-    text-shadow: 1px 1px 1px black;
-  }
-  
-  .page-header>h2{
-    margin-top: 0;
-    font-size: 40px;
-    font-weight: 100;
-  }
+/* Styles for page headers */
+.page-header {
+  padding: 10px; 
+  font-size: 3.5em; 
+  text-align: center;
+  color: white; 
+  text-shadow: 1px 1px 1px black; 
+}
 
-  .heading {
-    /* font-family: 'Patrick Hand SC', cursive; */
-    font-size: 2em;
-    color: var(--clr-heading);
-  }
-  
-  .text {
-    /* font-family: 'Nunito', sans-serif; */
-    font-size: 1em;
-    color: var(--clr-text);
-  }
-  
-  .placeholder {
-    margin-top: 50px;
-    background-color: #8d07cf;
-    /* height: 80px; */
-    padding: 20px;
-    width: auto;
-    border-radius: 10px;
-  }
-  
-  .memory-date {
-    /* font-family: 'Patrick Hand SC', cursive; */
-    font-size: 2em;
-    color: var(--clr-heading);
-    text-align: center;
-  }
-  
-  .memory-text {
-    /* font-family: 'Nunito', sans-serif; */
-    font-size: 1em;
-    color: var(--clr-text);
-    margin: 10px 0px;
-    text-align: center;
-  }
-  
-  .timeline {
-    margin: 50px 0px;
-  }
-  
-  .memory {
-    list-style-type: none;
-    position: relative;
-    margin: 0 auto;
-    width: 6px;
-    padding-top: 50px;
-    background: var(--clr-timeline);
-  }
-  
-  .memory::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 0;
-    width: 30px;
-    height: 30px;
-    border: 2px solid black;
-    border-radius: 50%;
-    background: var(--clr-memoryPoint);
-    transition: background .5s ease-in-out;
-  }
-  
-  .memory.in-view::after {
-    background: var(--clr-memoryPoint-active);
-  }
-  
+.page-header > h2 {
+  margin-top: 0;
+  font-size: 40px; 
+  font-weight: 100; 
+}
+
+/* Styles for headings */
+.heading {
+  font-size: 2em; 
+  color: white; 
+}
+
+/* Styles for text */
+.text {
+  font-size: 1em; 
+  color: white; 
+}
+
+/* Styles for date display within memory entries */
+.memory-date {
+  font-size: 2em; 
+  color: white; 
+  text-align: center; 
+}
+
+/* Styles for the text content within memory entries */
+.memory-text {
+  font-size: 1em;
+  color: white; 
+  margin: 10px 0px; 
+  text-align: center; 
+}
+
+/* General timeline styles */
+.timeline {
+  margin: 50px 0px; /* Vertical spacing around the timeline for separation */
+}
+
+/* Styles for individual memory entries */
+.memory {
+  list-style-type: none;
+  position: relative; 
+  margin: 0 auto;
+  width: 6px; 
+  padding-top: 50px; 
+  background: #bebebe; 
+}
+
+/* Style for the circle marker on the timeline */
+.memory::after {
+  content: ''; /* Required for pseudo-elements */
+  position: absolute; 
+  left: 50%; 
+  transform: translateX(-50%); /* Ensures the circle is perfectly centered */
+  bottom: 0; 
+  width: 30px; 
+  height: 30px; 
+  border: 2px solid black;
+  border-radius: 50%; 
+  background: white; 
+  transition: background .5s ease-in-out; /* Smooth transition for background color change */
+}
+
+/* Style when memory is in view, changes the background color */
+.memory.in-view::after {
+  background: #009485; /* Changes the background color to teal when in view */
+}
+
+/* Styles for the container holding memory details */
+.memory-container {
+  position: relative; 
+  bottom: 0; 
+  width: 400px; 
+  padding: 15px; 
+  border-radius: 10px; 
+  background: #009485; 
+  visibility: hidden;
+  opacity: 0; 
+  transition: all .5s ease-in-out; 
+}
+
+/* Style for the container when it is in view */
+.memory-container.in-view {
+  transform: none; /* Resets any transformations */
+  visibility: visible; 
+  opacity: 1; 
+}
+
+/* Pseudo-element for arrows pointing to the timeline */
+.memory-container::before {
+  content: '';
+  position: absolute; 
+  bottom: 7px; 
+  width: 0; 
+  height: 0; 
+  border-style: solid;
+}
+
+/* Styles for odd and even memories for positioning and animations */
+.memory:nth-child(odd) .memory-container {
+  left: 45px; 
+  transform: translate3d(200px,0,0); /* Starts off-screen to the right */
+}
+
+.memory:nth-child(odd) .memory-container.in-view {
+  transform: none; /* Resets transformation when in view */
+}
+
+.memory:nth-child(odd) .memory-container::before {
+  left: -15px; /* Positions the arrow to the left */
+  border-width: 8px 16px 8px 0;
+  border-color: transparent #009485 transparent transparent; 
+}
+
+.memory:nth-child(even) .memory-container {
+  right: 470px; /* Positions the container to the left for even items */
+  transform: translate3d(-200px,0,0); /* Starts off-screen to the left */
+}
+
+.memory:nth-child(even) .memory-container.in-view {
+  transform: none; /* Resets transformation when in view */
+}
+
+.memory:nth-child(even) .memory-container::before {
+  right: -15px; 
+  border-width: 8px 0 8px 16px; 
+  border-color: transparent transparent transparent #009485;
+}
+
+/* Responsive adjustments for smaller screens */
+@media screen and (max-width: 900px) {
   .memory-container {
-    position: relative;
-    bottom: 0;
-    width: 400px;
-    padding: 15px;
-    border-radius: 10px;
-    background: var(--clr-memory);
-    visibility: hidden;
-    opacity: 0;
-    transition: all .5s ease-in-out;
+    width: 250px; 
   }
-  
-  .memory-container.in-view {
-    transform: none;
-    visibility: visible;
-    opacity: 1;
-  }
-  
-  .memory-container::before {
-    content: '';
-    position: absolute;
-    bottom: 7px;
-    width: 0;
-    height: 0;
-    border-style: solid;
-  }
-  
-  .memory:nth-child(odd) .memory-container {
-    left: 45px;
-    transform: translate3d(200px,0,0);
-  }
-  
-  .memory:nth-child(odd) .memory-container.in-view {
-    transform: none;
-  }
-  
-  .memory:nth-child(odd) .memory-container::before {
-    left: -15px;
-    border-width: 8px 16px 8px 0;
-    border-color: transparent var(--clr-memory) transparent transparent;
-  }
-  
   .memory:nth-child(even) .memory-container {
-    right: 470px;
-    transform: translate3d(-200px,0,0);
+    right: 320px; 
   }
-  
-  .memory:nth-child(even) .memory-container.in-view {
-    transform: none;
+}
+
+@media screen and (max-width: 600px) {
+  .memory {
+    margin-left: 20px; 
   }
-  
+  .memory-container {
+    width: calc(100vw - 91px); 
+  }
+  .memory:nth-child(even) .memory-container {
+    left: 45px; 
+  }
   .memory:nth-child(even) .memory-container::before {
-    right: -15px;
-    border-width: 8px 0 8px 16px;
-    border-color: transparent transparent transparent var(--clr-memory);
+    left: -15px; 
+    border-width: 8px 16px 8px 0; /* Maintains arrow shape */
+    border-color: transparent #009485 transparent transparent; 
   }
-  
-  /* Timeline Responsiveness */
-  
-  @media screen and (max-width: 900px) {
-    .memory-container {
-      width: 250px;
-    }
-    .memory:nth-child(even) .memory-container {
-      right: 320px;
-    }
-  }
-  
-  @media screen and (max-width: 600px) {
-    .memory {
-      margin-left: 20px;
-    }
-    .memory-container {
-      width: calc(100vw - 91px);
-    }
-    .memory:nth-child(even) .memory-container {
-      left: 45px;
-    }
-    .memory:nth-child(even) .memory-container::before {
-      left: -15px;
-      border-width: 8px 16px 8px 0;
-      border-color: transparent var(--clr-memory) transparent transparent;
-    }
-  }
-  
-
-
-  
+}

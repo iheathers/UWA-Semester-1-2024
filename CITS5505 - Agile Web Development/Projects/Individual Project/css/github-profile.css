@@ -1,14 +1,14 @@
 
 
 /* Container for the github profile fetched using API */
-.container {
+.ajax-container {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
   text-align: center;
 }
 
-/* Card style for profile, with a background color, border radius, box shadow, padding, and top margin */
+/* Card style for profile, with a background color */
 .card {
   background-color: #f7f7f7;
   border-radius: 10px;
@@ -17,41 +17,41 @@
   margin-top: 20px;
 }
 
-/* Style for the profile image, with a fixed width, border radius, and bottom margin */
+/* Style for the profile image */
 .profile-img {
   width: 150px;
   border-radius: 50%;
   margin-bottom: 10px;
 }
 
-/* Style for the profile information, with a specific font size and bottom margin */
+/* Style for the profile information */
 .profile-info {
   font-size: 18px;
   margin-bottom: 15px;
 }
 
-/* Style for the paragraphs within the profile information, with centered text */
+/* Style for the paragraphs within the profile information */
 .profile-info > p {
   text-align: center;
 }
 
-/* Style for the strong elements within the profile information, with a specific color */
+/* Style for the strong elements within the profile information */
 .profile-info strong {
   color: #333;
 }
 
-/* Style for the profile link, with no text decoration and a specific color */
+/* Style for the profile link*/
 .profile-link {
   text-decoration: none;
   color: #007bff;
 }
 
-/* Hover effect for the profile link, adding an underline */
+/* Hover effect for the profile link */
 .profile-link:hover {
   text-decoration: underline;
 }
 
-/* Style for the GitHub input field, with padding, width, margin, border, and border radius */
+/* Style for the GitHub input field */
 .github-input{
   padding: 8px;
   width: 200px;
@@ -60,7 +60,7 @@
   border-radius: 5px;
 }
 
-/* Style for the submit button, with padding, width, margin, border, border radius, and background color */
+/* Style for the submit button */
 .sub-btn{
   padding: 8px;
   color: white;

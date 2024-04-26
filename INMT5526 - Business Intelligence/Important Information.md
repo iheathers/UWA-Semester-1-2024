@@ -9,7 +9,7 @@
 
 
 ### Public Holiday Make-Up Classes
-- Since, i am going on Tuesday, it's not affected
+- Since, i am going on Tuesday/Friday, it's not affected
 
 
 ### Notes

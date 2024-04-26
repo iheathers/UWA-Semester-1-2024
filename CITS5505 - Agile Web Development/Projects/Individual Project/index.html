@@ -1,27 +1,34 @@
-<html>
+<!DOCTYPE html>
+
+<html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- Meta tags for specifying the character set and responsive behavior -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Hyperlinks</title>
+
+    <!-- Linking to CSS files for styling the document -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/author.css">
     <link rel="stylesheet" href="css/timeline.css">
     <link rel="stylesheet" href="css/github-profile.css">
+    <link rel="stylesheet" href="css/reference.css">
 
+
+    <!-- Linking to external JavaScript and CSS for code highlighting -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"
         integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg=="
         crossorigin="anonymous" referrerPolicy="no-referrer"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css"
         integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ=="
-        crossorigin="anonymous" referrerPolicy="no-referrer" />
-
-
-
+        crossorigin="anonymous" referrerPolicy="no-referrer">
 
 </head>
 
 <body>
     <article class="page sans">
+        <!-- Header section with title and description -->
         <header>
             <h1 class="page-title"><span class="icon">🔗</span>Hyperlinks</h1>
             <p class="page-description">This article gives overview on the concept of hyperlinks, its history and its
@@ -31,9 +38,10 @@
 
             <!-- SECTION 1: CONCEPT OF  HYPERLINKS, HTTP REQUESTS AND AJAX -->
             <section>
+                <!-- Figure for demonstrating hyperlink concept with image -->
                 <figure class="image">
-                    <a href="assets/Untitled.png">
-                        <img style="width: 450px;" src="assets/Untitled.png" />
+                    <a href="assets/hyperlink-demo.png">
+                        <img alt="Hyperlink Illustration" style="width: 450px;" src="assets/hyperlink-demo.png">
                     </a>
                 </figure>
                 <h2>Concept of Hyperlinks and their implementation</h2>
@@ -41,18 +49,16 @@
                     <code>links</code>, are foundational elements of the World Wide Web, enabling users to
                     <code>navigate between</code> different web pages, resources, and content with a simple click. They
                     serve as connectors, facilitating the interconnected nature of the web and allowing users to explore
-                    a
-                    vast array of information and resources. In this section, we&#x27;ll delve into the concept of
+                    a vast array of information and resources. In this section, we&#x27;ll delve into the concept of
                     hyperlinks, their implementation in web development, and how they are interpreted and processed by
-                    web
-                    browsers.
+                    web browsers.
                 </p>
 
+                <!-- Video embed for further explanation -->
                 <figure>
                     <div class="source">
-                        <iframe width="100%" height="500"
-                            src="https://www.youtube.com/embed/3Va3oY8pfSI?si=Qm-zn-APcQ_FFGgc"
-                            title="YouTube video player" frameborder="0"
+                        <iframe height="500" src="https://www.youtube.com/embed/3Va3oY8pfSI?si=Qm-zn-APcQ_FFGgc"
+                            title="YouTube video player"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                         </iframe>
@@ -67,16 +73,16 @@
                     tag in HTML. Here&#x27;s a basic example:
                 </p>
 
+                <!-- Code example for creating a hyperlink -->
                 <pre
                     class="code"><code class="language-HTML">&lt;a href=&quot;https://example.com&quot;&gt;Click here to visit Example.com&lt;/a&gt;</code></pre>
-                <p>In this example, the
-                    <code><strong>href</strong></code> attribute specifies the URL (Uniform Resource Locator) of the
-                    destination page or resource. When a user clicks on the link, the browser navigates to the specified
-                    URL.
+                <p>In this example, the <code><strong>href</strong></code> attribute specifies the URL (Uniform Resource
+                    Locator) of the destination page or resource. When a user clicks on the link, the browser navigates
+                    to the specified URL.
                 </p>
                 <figure class="image">
-                    <a href="assets/Untitled 1.png">
-                        <img style="width:720px" src="assets/Untitled 1.png" />
+                    <a href="assets/html-link-overview.png">
+                        <img alt="HTML Link Overview" style="width:720px" src="assets/html-link-overview.png">
                     </a>
                 </figure>
                 <p>
@@ -90,6 +96,8 @@
                     In this case, clicking on the link would navigate the
                     user to the &quot;about.html&quot; page within the same website.
                 </p>
+
+                <!-- HTTP Requests Explanation -->
                 <h3>HTTP Requests:</h3>
                 <p>
                     When a user clicks on a hyperlink, the web browser initiates an HTTP (Hypertext Transfer Protocol)
@@ -97,11 +105,12 @@
                     server hosting the target resource, and the server responds with the requested content, typically in
                     the form of an HTML document, image, video, or other media.
                 </p>
+
+                <!-- Video embed for further explanation -->
                 <figure>
                     <div class="source">
-                        <iframe width="100%" height="500"
-                            src="https://www.youtube.com/embed/-Zea7GB2OwA?si=2-xIE1NUJqc4iajL"
-                            title="YouTube video player" frameborder="0"
+                        <iframe height="500" src="https://www.youtube.com/embed/-Zea7GB2OwA?si=2-xIE1NUJqc4iajL"
+                            title="YouTube video player"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
                         </iframe>
@@ -114,20 +123,25 @@
                     Once the response is received, the browser renders the content and displays it to the user.</p>
 
                 <figure class="image">
-                    <a href="assets/Untitled 2.png">
-                        <img style="width:707.998046875px" src="assets/Untitled 2.png" />
+                    <a href="assets/http-request.png">
+                        <img alt="HTTP Request" style="width:700px" src="assets/http-request.png">
                     </a>
                 </figure>
                 <p>If you want to learn more. Checkout the link below.</p>
+
+
+                <!-- Video embed for further explanation -->
                 <figure>
-                    <div class="source"><iframe width="100%" height="500"
-                            src="https://www.youtube.com/embed/keo0dglCj7I?si=NyQyXONZ20MZWS6_"
-                            title="YouTube video player" frameborder="0"
+                    <div class="source">
+
+                        <iframe height="500" src="https://www.youtube.com/embed/keo0dglCj7I?si=NyQyXONZ20MZWS6_"
+                            title="YouTube video player"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </figure>
 
+                <!-- AJAX Explanation and demo -->
 
                 <h3>AJAX (Asynchronous JavaScript and XML)</h3>
                 <p>Ajax, or asynchronous JavaScript and XML, is a web development technique that enables fetching
@@ -142,8 +156,8 @@
                 <p>By clicking the Fetch Profile
                     hyperlink, we can fetch profile of github user.
                 </p>
-                <div class="container">
-                    <h1>GitHub Profile Viewer</h1>
+                <div class="ajax-container">
+                    <h4>GitHub Profile Viewer</h4>
                     <input type="text" id="usernameInput" placeholder="Enter GitHub Username" class="github-input"
                         value="iheathers">
 
@@ -156,6 +170,8 @@
                     Experiment: Type in username of different Github User to see what happens.
                 </strong>
 
+
+                <!-- Code used for the ajax implementation -->
                 <pre class="code">
 <code class="language-JavaScript">
 // Function to fetch and display the GitHub profile
@@ -214,157 +230,159 @@ function fetchProfile() {
             <section>
 
 
-                <div class="placeholder">
+                <div class="page-header-container">
                     <div class="page-header">
                         <h2>A Brief History of Hyperlinks</h2>
                     </div>
                 </div>
 
-                <div class="timeline">
-                    <ul>
-                        <ul>
-                            <li class="memory">
-                                <div class="memory-container">
-                                    <p class="memory-date">1964-1965: Birth of Hypertext</p>
-                                    <p class="memory-text">Ted Nelson coins the term "link" during Project
-                                        Xanadu,
-                                        inspired
-                                        by Vannevar Bush's essay "As We May Think". <br /> <br />This marks the
-                                        conceptual
-                                        birth of hypertext, laying the foundation for linking documents
-                                        together.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="memory">
-                                <div class="memory-container">
-                                    <p class="memory-date">1966: Implementing Hyperlinks</p>
-                                    <p class="memory-text">Douglas Engelbart's team implements the concept of
-                                        hyperlinks
-                                        for
-                                        scrolling within a single document. <br> <br> This development
-                                        represents
-                                        the
-                                        first
-                                        practical implementation of hypertext navigation.</p>
-                                </div>
-                            </li>
-                            <li class="memory">
-                                <div class="memory-container">
-                                    <p class="memory-date">1968: Interlinking Documents</p>
-                                    <p class="memory-text">Engelbart's team achieves hyperlinking between
-                                        paragraphs
-                                        within
-                                        separate documents with NLS (oN-Line System). <br> <br> This
-                                        breakthrough
-                                        enables
-                                        users to navigate seamlessly between related content across different
-                                        files.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="memory">
-                                <div class="memory-container">
-                                    <p class="memory-date">1983: Designing Interactive Links</p>
-                                    <p class="memory-text">Ben Shneiderman and Dan Ostroff design and implement
-                                        the
-                                        highlighted link in the HyperTIES system. <br> <br> This innovation
-                                        introduces
-                                        interactive hyperlinks, enhancing user experience and ease of
-                                        navigation.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="memory">
-                                <div class="memory-container">
-                                    <p class="memory-date">1987: Hyperlinking Pages</p>
-                                    <p class="memory-text">HyperCard is released for the Apple Macintosh,
-                                        allowing
-                                        hyperlinking between pages within a document. <br> <br> This milestone
-                                        brings
-                                        hypertext capabilities to personal computing, facilitating non-linear
-                                        navigation
-                                        within digital content.</p>
-                                </div>
-                            </li>
-                            <li class="memory">
-                                <div class="memory-container">
-                                    <p class="memory-date">1988: Publishing Electronic Content</p>
-                                    <p class="memory-text">HyperTIES is used to publish the world's first
-                                        electronic
-                                        journal
-                                        and electronic book.<br> <br> This demonstrates the potential of
-                                        hyperlinks
-                                        in
-                                        disseminating information digitally, paving the way for online
-                                        publishing.
-                                    </p>
-                                </div>
-                            </li>
-                            <li class="memory">
-                                <div class="memory-container">
-                                    <p class="memory-date">1990: Hyperlinks in Help Files</p>
-                                    <p class="memory-text">Windows Help introduces widespread use of hyperlinks
-                                        within
-                                        help
-                                        files on Microsoft Windows 3.0. <br> <br>This integration of hyperlinks
-                                        into
-                                        software documentation enhances user support and troubleshooting.</p>
-                                </div>
-                            </li>
-                            <li class="memory">
-                                <div class="memory-container">
-                                    <p class="memory-date">1991: Hyperlinking Across the Internet</p>
-                                    <p class="memory-text">The Gopher protocol is released, featuring hyperlinks
-                                        from
-                                        any
-                                        Internet site to any other Internet site. <br> <br>This development
-                                        facilitates
-                                        the
-                                        interconnectedness of digital content across the emerging internet.</p>
-                                </div>
-                            </li>
-                            <li class="memory">
-                                <div class="memory-container">
-                                    <p class="memory-date">1993: Introduction of HTML</p>
-                                    <p class="memory-text">The release of the Mosaic browser brings HTML's
-                                        advantage
-                                        of
-                                        mixed graphics, text, and hyperlinks. <br> <br>This marks the beginning
-                                        of
-                                        the
-                                        World
-                                        Wide Web era, democratizing access to hypertext-based information.</p>
-                                </div>
-                            </li>
-                            <li class="memory">
-                                <div class="memory-container">
-                                    <p class="memory-date">1994-Present: Explosion of Hyperlinked Content</p>
-                                    <p class="memory-text">From the launch of search engines like Yahoo! and
-                                        Google
-                                        to
-                                        the
-                                        rise of social media platforms like Facebook and Instagram, hyperlinks
-                                        have
-                                        become
-                                        ubiquitous, shaping the way we navigate and interact with digital
-                                        information.
-                                    </p>
-                                </div>
-                            </li>
-                        </ul>
 
+                <!-- Timeline of the Hyperlink -->
+                <div class="timeline">
+
+                    <ul>
+                        <li class="memory">
+                            <div class="memory-container">
+                                <p class="memory-date">1964-1965: Birth of Hypertext</p>
+                                <p class="memory-text">Ted Nelson coins the term "link" during Project
+                                    Xanadu,
+                                    inspired
+                                    by Vannevar Bush's essay "As We May Think". <br> <br>This marks the
+                                    conceptual
+                                    birth of hypertext, laying the foundation for linking documents
+                                    together.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="memory">
+                            <div class="memory-container">
+                                <p class="memory-date">1966: Implementing Hyperlinks</p>
+                                <p class="memory-text">Douglas Engelbart's team implements the concept of
+                                    hyperlinks
+                                    for
+                                    scrolling within a single document. <br> <br> This development
+                                    represents
+                                    the
+                                    first
+                                    practical implementation of hypertext navigation.</p>
+                            </div>
+                        </li>
+                        <li class="memory">
+                            <div class="memory-container">
+                                <p class="memory-date">1968: Interlinking Documents</p>
+                                <p class="memory-text">Engelbart's team achieves hyperlinking between
+                                    paragraphs
+                                    within
+                                    separate documents with NLS (oN-Line System). <br> <br> This
+                                    breakthrough
+                                    enables
+                                    users to navigate seamlessly between related content across different
+                                    files.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="memory">
+                            <div class="memory-container">
+                                <p class="memory-date">1983: Designing Interactive Links</p>
+                                <p class="memory-text">Ben Shneiderman and Dan Ostroff design and implement
+                                    the
+                                    highlighted link in the HyperTIES system. <br> <br> This innovation
+                                    introduces
+                                    interactive hyperlinks, enhancing user experience and ease of
+                                    navigation.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="memory">
+                            <div class="memory-container">
+                                <p class="memory-date">1987: Hyperlinking Pages</p>
+                                <p class="memory-text">HyperCard is released for the Apple Macintosh,
+                                    allowing
+                                    hyperlinking between pages within a document. <br> <br> This milestone
+                                    brings
+                                    hypertext capabilities to personal computing, facilitating non-linear
+                                    navigation
+                                    within digital content.</p>
+                            </div>
+                        </li>
+                        <li class="memory">
+                            <div class="memory-container">
+                                <p class="memory-date">1988: Publishing Electronic Content</p>
+                                <p class="memory-text">HyperTIES is used to publish the world's first
+                                    electronic
+                                    journal
+                                    and electronic book.<br> <br> This demonstrates the potential of
+                                    hyperlinks
+                                    in
+                                    disseminating information digitally, paving the way for online
+                                    publishing.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="memory">
+                            <div class="memory-container">
+                                <p class="memory-date">1990: Hyperlinks in Help Files</p>
+                                <p class="memory-text">Windows Help introduces widespread use of hyperlinks
+                                    within
+                                    help
+                                    files on Microsoft Windows 3.0. <br> <br>This integration of hyperlinks
+                                    into
+                                    software documentation enhances user support and troubleshooting.</p>
+                            </div>
+                        </li>
+                        <li class="memory">
+                            <div class="memory-container">
+                                <p class="memory-date">1991: Hyperlinking Across the Internet</p>
+                                <p class="memory-text">The Gopher protocol is released, featuring hyperlinks
+                                    from
+                                    any
+                                    Internet site to any other Internet site. <br> <br>This development
+                                    facilitates
+                                    the
+                                    interconnectedness of digital content across the emerging internet.</p>
+                            </div>
+                        </li>
+                        <li class="memory">
+                            <div class="memory-container">
+                                <p class="memory-date">1993: Introduction of HTML</p>
+                                <p class="memory-text">The release of the Mosaic browser brings HTML's
+                                    advantage
+                                    of
+                                    mixed graphics, text, and hyperlinks. <br> <br>This marks the beginning
+                                    of
+                                    the
+                                    World
+                                    Wide Web era, democratizing access to hypertext-based information.</p>
+                            </div>
+                        </li>
+                        <li class="memory">
+                            <div class="memory-container">
+                                <p class="memory-date">1994-Present: Explosion of Hyperlinked Content</p>
+                                <p class="memory-text">From the launch of search engines like Yahoo! and
+                                    Google
+                                    to
+                                    the
+                                    rise of social media platforms like Facebook and Instagram, hyperlinks
+                                    have
+                                    become
+                                    ubiquitous, shaping the way we navigate and interact with digital
+                                    information.
+                                </p>
+                            </div>
+                        </li>
                     </ul>
+
+
                 </div>
 
                 <p>The history of hyperlinks is a fascinating journey
                     through the development of technology and the evolution of how we interact with information.
-                    Here&#x27;s
-                    a detailed account of the key technologies, applications, and the evolving use of hyperlinks
+                    Below is a detailed account of the key technologies, applications, and the evolving use of
+                    hyperlinks
                     in
                     both
                     presentation and organization of material:</p>
-                <ol type="1" class="numbered-list" start="1">
+                <ol class="numbered-list" start="1">
                     <li><strong>Conceptualization of Hypertext (1945-1960s):</strong>
                         <ul class="bulleted-list">
                             <li style="list-style-type:disc">The idea of hypertext can be traced back to
@@ -383,7 +401,7 @@ function fetchProfile() {
                         </ul>
                     </li>
                 </ol>
-                <ol type="1" class="numbered-list" start="2">
+                <ol class="numbered-list" start="2">
                     <li><strong>Early Implementations (1960s-1970s):</strong>
                         <ul class="bulleted-list">
                             <li style="list-style-type:disc">Douglas Engelbart&#x27;s team at Stanford Research
@@ -398,7 +416,7 @@ function fetchProfile() {
                         </ul>
                     </li>
                 </ol>
-                <ol type="1" class="numbered-list" start="3">
+                <ol class="numbered-list" start="3">
                     <li><strong>Development of Hypermedia Systems (1980s):</strong>
                         <ul class="bulleted-list">
                             <li style="list-style-type:disc">In the 1980s, researchers and developers began
@@ -410,7 +428,7 @@ function fetchProfile() {
                         </ul>
                     </li>
                 </ol>
-                <ol type="1" class="numbered-list" start="4">
+                <ol class="numbered-list" start="4">
                     <li><strong>Standardization of HTML (1990s):</strong>
                         <ul class="bulleted-list">
                             <li style="list-style-type:disc">The introduction of the World Wide Web in the early
@@ -424,10 +442,10 @@ function fetchProfile() {
                         </ul>
                     </li>
                 </ol>
-                <ol type="1" class="numbered-list" start="5">
+                <ol class="numbered-list" start="5">
                     <li><strong>Expansion of the World Wide Web (1990s-2000s):</strong>
                         <ul class="bulleted-list">
-                            <li style="list-style-type:disc">With the proliferation of web browsers like Mosaic
+                            <li style="list-style-type:disc">With the expansion of web browsers like Mosaic
                                 and
                                 Netscape
                                 Navigator, the World Wide Web experienced exponential growth in the late 1990s
@@ -440,7 +458,7 @@ function fetchProfile() {
                         </ul>
                     </li>
                 </ol>
-                <ol type="1" class="numbered-list" start="6">
+                <ol class="numbered-list" start="6">
                     <li><strong>Search Engines and SEO (1990s-Present):</strong>
                         <ul class="bulleted-list">
                             <li style="list-style-type:disc">The rise of search engines like Yahoo!, AltaVista,
@@ -456,23 +474,23 @@ function fetchProfile() {
                         </ul>
                     </li>
                 </ol>
-                <ol type="1" class="numbered-list" start="7">
+                <ol class="numbered-list" start="7">
                     <li><strong>Social Media and Link Sharing (2000s-Present):</strong>
                         <ul class="bulleted-list">
                             <li style="list-style-type:disc">The emergence of social media platforms such as
                                 Facebook,
                                 Twitter, and Instagram in the 2000s led to a new era of hyperlink sharing and
-                                dissemination
+                                distribution
                                 of information. Users could easily share links to articles, videos, and other
                                 content,
                                 contributing to the virality of online content.</li>
                         </ul>
                     </li>
                 </ol>
-                <ol type="1" class="numbered-list" start="8">
+                <ol class="numbered-list" start="8">
                     <li><strong>Mobile Revolution and Deep Linking (2010s-Present):</strong>
                         <ul class="bulleted-list">
-                            <li style="list-style-type:disc">The proliferation of smartphones and mobile apps in
+                            <li style="list-style-type:disc">The popularity of smartphones and mobile apps in
                                 the
                                 2010s
                                 brought hyperlinks to the palm of users&#x27; hands. Deep linking technologies
@@ -484,7 +502,7 @@ function fetchProfile() {
                         </ul>
                     </li>
                 </ol>
-                <ol type="1" class="numbered-list" start="9">
+                <ol class="numbered-list" start="9">
                     <li><strong>Semantic Web and Linked Data (2000s-Present):</strong>
                         <ul class="bulleted-list">
                             <li style="list-style-type:disc">The concept of the Semantic Web, proposed by Tim
@@ -500,7 +518,7 @@ function fetchProfile() {
                         </ul>
                     </li>
                 </ol>
-                <ol type="1" class="numbered-list" start="10">
+                <ol class="numbered-list" start="10">
                     <li><strong>Future Directions (Beyond 2020):</strong>
                         <ul class="bulleted-list">
                             <li style="list-style-type:disc">As technology continues to evolve, hyperlinks are
@@ -515,36 +533,27 @@ function fetchProfile() {
                         </ul>
                     </li>
                 </ol>
-                <p>The history of hyperlinks is a testament
-                    to the power of interconnectedness and the ever-changing landscape of digital communication.
-                    From
-                    humble
-                    beginnings as a concept in the minds of visionaries to a ubiquitous feature of the modern
-                    web,
-                    hyperlinks have revolutionized the way we organize, share, and discover information, shaping
-                    the
-                    digital
-                    world as we know it today.</p>
+
 
 
             </section>
 
-            <hr>
+            <hr style="margin-top: 50px;">
 
 
             <!-- SECTION 3: AUTHOR DETAILS -->
             <section>
 
 
-                <h1>AUTHOR</h1>
+                <h2 style="text-align: center; margin: 50px; font-size: 40px;">AUTHOR</h2>
                 <div class="container">
                     <div class="profile_container">
                         <div class="back"></div>
                         <div class="profile"></div>
                     </div>
                     <div class="profile_infos">
-                        <h1 class="name">Pritam Suwal Shrestha</h1>
-                        <h2 class="occupation">Software Engineer</h2>
+                        <h2 class="name">Pritam Suwal Shrestha</h2>
+                        <h3 class="occupation">Software Engineer</h3>
                     </div>
 
                     <div>
@@ -552,209 +561,211 @@ function fetchProfile() {
                     </div>
                 </div>
 
-                <div>
+                <div class="author-section">
 
-
-
-                    <!-- <h1 id="hi-👋-my-name-is-pritam-shrestha">Hi 👋 My name is Pritam Shrestha</h1>
-                <h2 id="full-stack-web-developer--software-engineer">Full Stack Web Developer | Software Engineer</h2> -->
-                    <p>Accomplished software engineer with 2 years of professional experience in commercial
+                    <p>Software engineer with 2 years of professional experience in commercial
                         application
                         development. Passionate to delivering innovative, efficient, and scalable business solutions
                         to
                         companies across the globe using state-of-art technologies.</p>
                     <ul>
-                        <li>🌍  I&#39;m based in Perth, Australia</li>
+                        <li>🌍  I'm based in Perth, Australia</li>
                         <li>✉️  You can contact me at <a
                                 href="mailto:pritamshresthaofficial@gmail.com">pritamshresthaofficial@gmail.com</a>
                         </li>
-                        <li>🚀  I&#39;m currently studying Masters of Information Technology in <a
+                        <li>🚀  I'm currently studying Masters of Information Technology in <a
                                 href="https://www.uwa.edu.au">The University of Western Australia</a></li>
-                        <li>🧠  I&#39;m learning Next.js</li>
+                        <li>🧠  I'm learning Next.js</li>
                     </ul>
-                    <p><a href="https://www.twitter.com/iheathers" target="_blank" rel="noreferrer"><img
-                                src="https://img.shields.io/twitter/follow/iheathers?logo=twitter&style=for-the-badge&color=3382ed&labelColor=27272a" /></a><a
-                            href="https://www.github.com/iheathers" target="_blank" rel="noreferrer"><img
-                                src="https://img.shields.io/github/followers/iheathers?logo=github&style=for-the-badge&color=3382ed&labelColor=27272a" /></a><a
-                            href="https://www.twitch.tv/iheathers" target="_blank" rel="noreferrer"><img
-                                src="https://img.shields.io/twitch/status/iheathers?logo=twitchsx&style=for-the-badge&color=3382ed&labelColor=27272a&label=TWITCH+STATUS" /></a>
-                    </p>
-                    <h3 id="skills">Skills</h3>
-                    <p align="left">
+                    <div>
+                        <a href="https://www.twitter.com/iheathers" target="_blank" rel="noreferrer">
+                            <img alt="Link to Twitter"
+                                src="https://img.shields.io/twitter/follow/iheathers?logo=twitter&style=for-the-badge&color=3382ed&labelColor=27272a"></a><a
+                            href="https://www.github.com/iheathers" target="_blank" rel="noreferrer">
+                            <img alt="Link to GitHub"
+                                src="https://img.shields.io/github/followers/iheathers?logo=github&style=for-the-badge&color=3382ed&labelColor=27272a"></a><a
+                            href="https://www.twitch.tv/iheathers" target="_blank" rel="noreferrer">
+                            <img alt="Link to Twitch"
+                                src="https://img.shields.io/twitch/status/iheathers?logo=twitchsx&style=for-the-badge&color=3382ed&labelColor=27272a&label=TWITCH+STATUS"></a>
+                    </div>
+                    <h3>Skills</h3>
 
-                    <h4 id="programming-languages">Programming Languages</h4>
-                    <p><a href="https://docs.microsoft.com/en-us/cpp/?view=msvc-170" target="_blank"
-                            rel="noreferrer"><img
-                                src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/c-colored.svg"
-                                width="36" height="36" alt="C" /></a><a
-                            href="https://docs.microsoft.com/en-us/cpp/?view=msvc-170" target="_blank"
-                            rel="noreferrer"><img
-                                src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/cplusplus-colored.svg"
-                                width="36" height="36" alt="C++" /></a><a href="https://www.oracle.com/java/"
-                            target="_blank" rel="noreferrer"><img
-                                src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/java-colored.svg"
-                                width="36" height="36" alt="Java" /></a>
-                        <a href="https://www.python.org/" target="_blank" rel="noreferrer"><img
-                                src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/python-colored.svg"
-                                width="36" height="36" alt="Python" /></a>
+
+                    <h4>Programming Languages</h4>
+                    <div>
+                        <a href="https://docs.microsoft.com/en-us/cpp/?view=msvc-170" target="_blank" rel="noreferrer">
+                            <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/c-colored.svg"
+                                width="36" height="36" alt="C">
+                        </a>
+                        <a href="https://docs.microsoft.com/en-us/cpp/?view=msvc-170" target="_blank" rel="noreferrer">
+                            <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/cplusplus-colored.svg"
+                                width="36" height="36" alt="C++">
+                        </a>
+                        <a href="https://www.oracle.com/java/" target="_blank" rel="noreferrer">
+                            <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/java-colored.svg"
+                                width="36" height="36" alt="Java">
+                        </a>
+                        <a href="https://www.python.org/" target="_blank" rel="noreferrer">
+                            <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/python-colored.svg"
+                                width="36" height="36" alt="Python">
+                        </a>
                         <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"
-                            rel="noreferrer"><img
-                                src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/javascript-colored.svg"
-                                width="36" height="36" alt="Javascript" /></a>
-                        <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"><img
-                                src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/typescript-colored.svg"
-                                width="36" height="36" alt="Typescript" /></a>
-                    </p>
-                    <h4 id="frontend">Frontend</h4>
-                    <p><a href="https://developer.mozilla.org/en-US/docs/Glossary/HTML5" target="_blank"
+                            rel="noreferrer">
+                            <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/javascript-colored.svg"
+                                width="36" height="36" alt="Javascript">
+                        </a>
+                        <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer">
+                            <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/typescript-colored.svg"
+                                width="36" height="36" alt="Typescript">
+                        </a>
+                    </div>
+                    <h4>Frontend</h4>
+                    <div>
+                        <a href="https://developer.mozilla.org/en-US/docs/Glossary/HTML5" target="_blank"
                             rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/html5-colored.svg"
-                                width="36" height="36" alt="HTML5" /></a>
+                                width="36" height="36" alt="HTML5"></a>
                         <a href="https://www.w3.org/TR/CSS/#css" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/css3-colored.svg"
-                                width="36" height="36" alt="CSS3" /></a>
+                                width="36" height="36" alt="CSS3"></a>
                         <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"
                             rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/javascript-colored.svg"
-                                width="36" height="36" alt="Javascript" /></a>
+                                width="36" height="36" alt="Javascript"></a>
                         <a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/typescript-colored.svg"
-                                width="36" height="36" alt="Typescript" /></a>
+                                width="36" height="36" alt="Typescript"></a>
                         <a href="https://reactjs.org/" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/react-colored.svg"
-                                width="36" height="36" alt="React" /></a>
+                                width="36" height="36" alt="React"></a>
                         <a href="https://nextjs.org/docs" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/nextjs-colored.svg"
-                                width="36" height="36" alt="NextJs" /></a>
+                                width="36" height="36" alt="NextJs"></a>
                         <a href="https://www.gatsbyjs.com/" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/gatsby-colored.svg"
-                                width="36" height="36" alt="Gatsby" /></a>
+                                width="36" height="36" alt="Gatsby"></a>
                         <a href="https://jquery.com/" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/jquery-colored.svg"
-                                width="36" height="36" alt="JQuery" /></a>
+                                width="36" height="36" alt="JQuery"></a>
                         <a href="https://sass-lang.com/" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/sass-colored.svg"
-                                width="36" height="36" alt="Sass" /></a>
+                                width="36" height="36" alt="Sass"></a>
                         <a href="https://getbootstrap.com/" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/bootstrap-colored.svg"
-                                width="36" height="36" alt="Bootstrap" /></a>
+                                width="36" height="36" alt="Bootstrap"></a>
                         <a href="https://mui.com/" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/materialui-colored.svg"
-                                width="36" height="36" alt="Material UI" /></a>
+                                width="36" height="36" alt="Material UI"></a>
                         <a href="https://redux.js.org/" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/redux-colored.svg"
-                                width="36" height="36" alt="Redux" /></a>
+                                width="36" height="36" alt="Redux"></a>
                         <a href="https://webpack.js.org/" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/webpack-colored.svg"
-                                width="36" height="36" alt="Webpack" /></a>
+                                width="36" height="36" alt="Webpack"></a>
                         <a href="https://babeljs.io/" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/babel-colored.svg"
-                                width="36" height="36" alt="Babel" /></a>
-                    </p>
-                    <h4 id="backend">Backend</h4>
-                    <p><a href="https://nodejs.org/en/" target="_blank" rel="noreferrer"><img
+                                width="36" height="36" alt="Babel"></a>
+                    </div>
+                    <h4>Backend</h4>
+                    <div>
+                        <a href="https://nodejs.org/en/" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/nodejs-colored.svg"
-                                width="36" height="36" alt="NodeJS" /></a>
+                                width="36" height="36" alt="NodeJS"></a>
                         <a href="https://expressjs.com/" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/express-colored.svg"
-                                width="36" height="36" alt="Express" /></a>
+                                width="36" height="36" alt="Express"></a>
                         <a href="https://www.mongodb.com/" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/mongodb-colored.svg"
-                                width="36" height="36" alt="MongoDB" /></a>
+                                width="36" height="36" alt="MongoDB"></a>
                         <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/mysql-colored.svg"
-                                width="36" height="36" alt="MySQL" /></a>
+                                width="36" height="36" alt="MySQL"></a>
                         <a href="https://www.postgresql.org/" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/postgresql-colored.svg"
-                                width="36" height="36" alt="PostgreSQL" /></a>
+                                width="36" height="36" alt="PostgreSQL"></a>
                         <a href="https://flask.palletsprojects.com/en/2.0.x/" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/flask-colored.svg"
-                                width="36" height="36" alt="Flask" /></a>
+                                width="36" height="36" alt="Flask"></a>
                         <a href="https://www.djangoproject.com/" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/django-colored.svg"
-                                width="36" height="36" alt="Django" /></a>
-                    </p>
-                    <h4 id="design-tools">Design Tools</h4>
-                    <p><a href="https://www.figma.com/" target="_blank" rel="noreferrer"><img
+                                width="36" height="36" alt="Django"></a>
+                    </div>
+                    <h4>Design Tools</h4>
+                    <div>
+                        <a href="https://www.figma.com/" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/figma-colored.svg"
-                                width="36" height="36" alt="Figma" /></a>
+                                width="36" height="36" alt="Figma"></a>
                         <a href="adobe.com/uk/products/illustrator.html" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/illustrator-colored.svg"
-                                width="36" height="36" alt="Illustrator" /></a>
+                                width="36" height="36" alt="Illustrator"></a>
                         <a href="https://www.adobe.com/uk/products/xd.html" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/xd-colored.svg"
-                                width="36" height="36" alt="XD" /></a>
-                    </p>
-                    <h4 id="build-and-deployment-tools">Build and Deployment Tools</h4>
-                    <p><a href="https://www.heroku.com/" target="_blank" rel="noreferrer"><img
+                                width="36" height="36" alt="XD"></a>
+                    </div>
+                    <h4>Build and Deployment Tools</h4>
+                    <div>
+                        <a href="https://www.heroku.com/" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/heroku-colored.svg"
-                                width="36" height="36" alt="Heroku" /></a>
+                                width="36" height="36" alt="Heroku"></a>
                         <a href="https://www.nginx.com/" target="_blank" rel="noreferrer"><img
                                 src="https://www.nginx.com/wp-content/uploads/2020/05/NGINX-product-icon.svg" width="36"
-                                height="36" alt="Heroku" /></a>
-                    </p>
-                    </p>
+                                height="36" alt="Heroku"></a>
+                    </div>
 
-                    <h3 id="socials">Socials</h3>
-                    <p align="left">
+
+                    <h3>Socials</h3>
+                    <div style="margin-top: 20px; margin-bottom: 20px;">
                         <a href="https://www.behance.com/iheathers" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/behance.svg"
-                                width="32" height="32" /></a>
+                                width="32" height="32" alt="Behance"></a>
                         <a href="https://www.codepen.io/iheathers" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/codepen.svg"
-                                width="32" height="32" /></a>
+                                width="32" height="32" alt="Codepen"></a>
                         <a href="https://codesandbox.io/u/iheathers" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/codesandbox.svg"
-                                width="32" height="32" /></a>
+                                width="32" height="32" alt="codesandbox"></a>
                         <a href="https://www.dev.to/iheathers" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/devdotto.svg"
-                                width="32" height="32" /></a>
+                                width="32" height="32" alt="dev"></a>
                         <a href="https://discord.com/users/iheathers" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/discord.svg"
-                                width="32" height="32" /></a>
+                                width="32" height="32" alt="Discord"></a>
                         <a href="https://www.dribbble.com/iheathers" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/dribbble.svg"
-                                width="32" height="32" /></a>
+                                width="32" height="32" alt="dribble"></a>
                         <a href="https://www.github.com/iheathers" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github.svg"
-                                width="32" height="32" /></a>
+                                width="32" height="32" alt="github"></a>
                         <a href="https://www.linkedin.com/in/pritam-shrestha" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/linkedin.svg"
-                                width="32" height="32" /></a>
+                                width="32" height="32" alt="linkedin"></a>
                         <a href="http://www.medium.com/@iheathers" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/medium.svg"
-                                width="32" height="32" /></a>
+                                width="32" height="32" alt="medium"></a>
                         <a href="https://www.stackoverflow.com/users/9685065/iheathers" target="_blank"
                             rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/stackoverflow.svg"
-                                width="32" height="32" /></a>
+                                width="32" height="32" alt="stackoverflow"></a>
                         <a href="https://www.twitter.com/iheathers" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/twitter.svg"
-                                width="32" height="32" /></a>
+                                width="32" height="32" alt="twitter"></a>
                         <a href="https://www.youtube.com/channel/UCfM79XRa3JBrBznJMUn7dcg" target="_blank"
                             rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/youtube.svg"
-                                width="32" height="32" /></a>
+                                width="32" height="32" alt="youtube"></a>
                         <a href="https://www.twitch.tv/iheathers" target="_blank" rel="noreferrer"><img
                                 src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/twitch.svg"
-                                width="32" height="32" /></a>
-                    </p>
+                                width="32" height="32" alt="twitch"></a>
+                    </div>
 
-                    <!-- <h3 id="badges">Badges</h3>
-                <p><b>My GitHub Stats</b></p>
-                <p><a href="http://www.github.com/iheathers"><img
-                            src="https://github-readme-stats.vercel.app/api?username=iheathers&show_icons=true&hide=&count_private=true&title_color=3382ed&text_color=000000&icon_color=3382ed&bg_color=eeeeee&hide_border=true&show_icons=true"
-                            alt="iheathers's GitHub stats" /></a></p>
-                <p><a href="http://www.github.com/iheathers"><img
-                            src="https://github-readme-streak-stats.herokuapp.com/?user=iheathers&stroke=000000&background=eeeeee&ring=3382ed&fire=3382ed&currStreakNum=000000&currStreakLabel=3382ed&sideNums=000000&sideLabels=000000&dates=000000&hide_border=true" /></a>
-                </p> -->
-                    <p><a href="https://github.com/ashutosh00710/github-readme-activity-graph"><img
+
+                    <div>
+                        <a href="https://github.com/iheathers"><img
                                 src="https://github-readme-activity-graph.vercel.app/graph?username=iheathers&amp;theme=github-compact"
-                                alt="Pritam&#39;s github activity graph"></a></p>
+                                alt="Pritam&#39;s github activity graph"></a>
+                    </div>
 
-                    <!-- <p><a href="https://github.com/iheathers" align="left"><img
-                            src="https://github-readme-stats.vercel.app/api/top-langs/?username=iheathers&langs_count=10&title_color=3382ed&text_color=000000&icon_color=3382ed&bg_color=eeeeee&hide_border=true&locale=en&custom_title=Top%20%Languages"
-                            alt="Top Languages" /></a></p> -->
+
                 </div>
 
             </section>
@@ -763,7 +774,7 @@ function fetchProfile() {
             <!-- SECTION 4: REFERENCES -->
 
             <section>
-                <h2>REFERENCES</h2>
+                <h2 style="margin-top: 50px;">REFERENCES</h2>
                 <figure><a href="https://tech.jotform.com/understanding-http-headers-f240f215f37b"
                         class="bookmark source">
                         <div class="bookmark-info">
@@ -776,10 +787,11 @@ function fetchProfile() {
                             </div>
                             <div class="bookmark-href"><img
                                     src="https://miro.medium.com/v2/resize:fill:152:152/1*sHhtYhaCe2Uc3IU0IgKwIQ.png"
-                                    class="icon bookmark-icon" />https://tech.jotform.com/understanding-http-headers-f240f215f37b
+                                    alt="medium"
+                                    class="icon bookmark-icon">https://tech.jotform.com/understanding-http-headers-f240f215f37b
                             </div>
                         </div><img src="https://miro.medium.com/v2/resize:fit:900/0*unXfO_qxEPNMVJNv.png"
-                            class="bookmark-image" />
+                            class="bookmark-image" alt="Micro Medium">
                     </a></figure>
                 <figure><a
                         href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_are_hyperlinks"
@@ -794,11 +806,11 @@ function fetchProfile() {
                                     basics of Web architecture.</div>
                             </div>
                             <div class="bookmark-href"><img
-                                    src="https://developer.mozilla.org/favicon-48x48.cbbd161b.png"
-                                    class="icon bookmark-icon" />https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_are_hyperlinks
+                                    src="https://developer.mozilla.org/favicon-48x48.cbbd161b.png" alt="mozilla"
+                                    class="icon bookmark-icon">https://developer.mozilla.org/en-US/docs/Learn/Common_questions/Web_mechanics/What_are_hyperlinks
                             </div>
                         </div><img src="https://developer.mozilla.org/mdn-social-share.cd6c4a5a.png"
-                            class="bookmark-image" />
+                            class="bookmark-image" alt="developer mozilla">
                     </a></figure>
                 <figure><a href="https://www.computerhope.com/jargon/h/hyperlink.htm" class="bookmark source">
                         <div class="bookmark-info">
@@ -808,11 +820,12 @@ function fetchProfile() {
                                     means
                                     including related links, information, and terms.</div>
                             </div>
-                            <div class="bookmark-href"><img src="https://www.computerhope.com/cdn/apple-touch-icon.png"
-                                    class="icon bookmark-icon" />https://www.computerhope.com/jargon/h/hyperlink.htm
+                            <div class="bookmark-href"><img alt="computerhope"
+                                    src="https://www.computerhope.com/cdn/apple-touch-icon.png"
+                                    class="icon bookmark-icon">https://www.computerhope.com/jargon/h/hyperlink.htm
                             </div>
                         </div><img src="https://www.computerhope.com/issues/pictures/html-link.png"
-                            class="bookmark-image" />
+                            class="bookmark-image" alt="computerhope.com">
                     </a></figure>
                 <figure><a
                         href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Fetching_data"
@@ -826,12 +839,12 @@ function fetchProfile() {
                                     to
                                     fetch data from the server.</div>
                             </div>
-                            <div class="bookmark-href"><img
+                            <div class="bookmark-href"><img alt="mozilla"
                                     src="https://developer.mozilla.org/favicon-48x48.cbbd161b.png"
-                                    class="icon bookmark-icon" />https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Fetching_data
+                                    class="icon bookmark-icon">https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Fetching_data
                             </div>
-                        </div><img src="https://developer.mozilla.org/mdn-social-share.cd6c4a5a.png"
-                            class="bookmark-image" />
+                        </div><img src="https://developer.mozilla.org/mdn-social-share.cd6c4a5a.png" alt="mozilla"
+                            class="bookmark-image">
                     </a></figure>
                 <figure><a href="https://www.wired.com/story/google-link-hyperlink-seo/" class="bookmark source">
                         <div class="bookmark-info">
@@ -841,13 +854,13 @@ function fetchProfile() {
                                     replaced
                                     pre-web visions of linking</div>
                             </div>
-                            <div class="bookmark-href"><img
-                                    src="https://www.wired.com/verso/static/wired/assets/favicon.ico"
-                                    class="icon bookmark-icon" />https://www.wired.com/story/google-link-hyperlink-seo/
+                            <div class="bookmark-href">
+                                <img src="https://www.wired.com/verso/static/wired/assets/favicon.ico" alt="wired"
+                                    class="icon bookmark-icon">https://www.wired.com/story/google-link-hyperlink-seo/
                             </div>
                         </div><img
                             src="https://media.wired.com/photos/65e83fb0ca05735b27c505c9/2:3/w_1332,h_1998,c_limit/link.jpg"
-                            class="bookmark-image" />
+                            alt="wired" class="bookmark-image">
                     </a></figure>
                 <figure><a href="https://en.wikipedia.org/wiki/Hyperlink" class="bookmark source">
                         <div class="bookmark-info">
@@ -867,11 +880,13 @@ function fetchProfile() {
                                     to
                                     navigate or browse the hypertext.</div>
                             </div>
-                            <div class="bookmark-href"><img
-                                    src="https://en.wikipedia.org/static/apple-touch/wikipedia.png"
-                                    class="icon bookmark-icon" />https://en.wikipedia.org/wiki/Hyperlink</div>
-                        </div><img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Sistema_hipertextual.jpg"
-                            class="bookmark-image" />
+                            <div class="bookmark-href">
+                                <img src="https://en.wikipedia.org/static/apple-touch/wikipedia.png" alt="wikipedia"
+                                    class="icon bookmark-icon">https://en.wikipedia.org/wiki/Hyperlink
+                            </div>
+                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/41/Sistema_hipertextual.jpg"
+                            alt="wikipedia" class="bookmark-image">
                     </a></figure>
                 <figure><a href="https://www.cs.umd.edu/hcil/hyperties/" class="bookmark source">
                         <div class="bookmark-info">
@@ -885,8 +900,8 @@ function fetchProfile() {
                                     button, article length, and global string search were all studied empirically.
                                 </div>
                             </div>
-                            <div class="bookmark-href"><img src="https://www.cs.umd.edu/favicon.ico"
-                                    class="icon bookmark-icon" />https://www.cs.umd.edu/hcil/hyperties/</div>
+                            <div class="bookmark-href"><img src="https://www.cs.umd.edu/favicon.ico" alt="cs.umd.edu"
+                                    class="icon bookmark-icon">https://www.cs.umd.edu/hcil/hyperties/</div>
                         </div>
                     </a></figure>
                 <figure><a href="https://en.wikipedia.org/wiki/Timeline_of_hypertext_technology"
@@ -902,9 +917,9 @@ function fetchProfile() {
                                     philosopher
                                     Ted Nelson.</div>
                             </div>
-                            <div class="bookmark-href"><img
+                            <div class="bookmark-href"><img alt="wikipedia"
                                     src="https://en.wikipedia.org/static/apple-touch/wikipedia.png"
-                                    class="icon bookmark-icon" />https://en.wikipedia.org/wiki/Timeline_of_hypertext_technology
+                                    class="icon bookmark-icon">https://en.wikipedia.org/wiki/Timeline_of_hypertext_technology
                             </div>
                         </div>
                     </a></figure>
@@ -921,13 +936,13 @@ function fetchProfile() {
                                     Did
                                     you ev</div>
                             </div>
-                            <div class="bookmark-href"><img
+                            <div class="bookmark-href"><img alt="mozilla blog"
                                     src="https://blog.mozilla.org/wp-content/themes/foxtail/assets/images/favicons/apple-touch-icon.png"
-                                    class="icon bookmark-icon" />https://blog.mozilla.org/en/internet-culture/deep-dives/why-are-hyperlinks-blue/
+                                    class="icon bookmark-icon">https://blog.mozilla.org/en/internet-culture/deep-dives/why-are-hyperlinks-blue/
                             </div>
-                        </div><img
+                        </div><img alt="Mozilla Blog"
                             src="https://blog.mozilla.org/wp-content/blogs.dir/278/files/2021/08/moz_explains_blue_links_blog_header-1080x720.jpg"
-                            class="bookmark-image" />
+                            class="bookmark-image">
                     </a></figure>
                 <figure><a href="https://thehistoryoftheweb.com/brief-history-hypertext/" class="bookmark source">
                         <div class="bookmark-info">
@@ -939,12 +954,12 @@ function fetchProfile() {
                                     But
                                     its name and conception predate the web&#x27;s creation by decades.</div>
                             </div>
-                            <div class="bookmark-href"><img
+                            <div class="bookmark-href"><img alt="thehistoryoftheweb.com"
                                     src="https://ik.imagekit.io/aoi3fgebjgr/wp-content/uploads/2017/09/cropped-thotw-logo-square-1-192x192.jpg"
-                                    class="icon bookmark-icon" />https://thehistoryoftheweb.com/brief-history-hypertext/
+                                    class="icon bookmark-icon">https://thehistoryoftheweb.com/brief-history-hypertext/
                             </div>
                         </div><img src="https://thehistoryoftheweb.com/wp-json/social-image-generator/v1/image/262"
-                            class="bookmark-image" />
+                            alt="thehistoryoftheweb.com" class="bookmark-image">
                     </a></figure>
                 <figure><a
                         href="https://www.annehelmond.nl/wordpress/wp-content/uploads/2018/12/Helmond-2018-A-historiography-of-the-hyperlink.pdf"
@@ -965,12 +980,12 @@ function fetchProfile() {
                                 <div class="bookmark-title">A Brief History of Hypertext</div>
                                 <div class="bookmark-description">A timeline of this crazy new(ish) thing.</div>
                             </div>
-                            <div class="bookmark-href"><img
+                            <div class="bookmark-href"><img alt="Medium"
                                     src="https://miro.medium.com/v2/resize:fill:152:152/1*sHhtYhaCe2Uc3IU0IgKwIQ.png"
-                                    class="icon bookmark-icon" />https://medium.com/nonlinear-nonfiction/a-brief-history-of-hypertext-74400dd8984
+                                    class="icon bookmark-icon">https://medium.com/nonlinear-nonfiction/a-brief-history-of-hypertext-74400dd8984
                             </div>
                         </div><img src="https://miro.medium.com/v2/resize:fit:1200/1*A_8GqN8WCOmUxwGyHI4cYQ.jpeg"
-                            class="bookmark-image" />
+                            alt="Medium" class="bookmark-image">
                     </a></figure>
                 <figure><a href="https://cs.wellesley.edu/~cs215/Lectures/L00-HistoryHypermedia/FromHypertextToWWW.html"
                         class="bookmark source">
@@ -988,7 +1003,8 @@ function fetchProfile() {
                                     others. We will examine here briefly how all this changed.</div>
                             </div>
                             <div class="bookmark-href"><img src="https://cs.wellesley.edu/favicon.ico"
-                                    class="icon bookmark-icon" />https://cs.wellesley.edu/~cs215/Lectures/L00-HistoryHypermedia/FromHypertextToWWW.html
+                                    alt="cs.wellesley.edu"
+                                    class="icon bookmark-icon">https://cs.wellesley.edu/~cs215/Lectures/L00-HistoryHypermedia/FromHypertextToWWW.html
                             </div>
                         </div>
                     </a></figure>
@@ -997,7 +1013,7 @@ function fetchProfile() {
     </article>
 
     <script src="scripts/script.js"></script>
-    <script type="module" src="scripts/timeline.js"></script>
+    <script src="scripts/timeline.js"></script>
 </body>
 
 </html>

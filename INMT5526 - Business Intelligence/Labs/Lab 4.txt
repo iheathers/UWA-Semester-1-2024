@@ -1,0 +1,327 @@
+MySQL Shell 8.0.30
+
+Copyright (c) 2016, 2022, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \connect 23852811@db.tris.id.au
+Creating a session to '23852811@db.tris.id.au'
+Fetching schema names for autocompletion... Press ^C to stop.
+Your MySQL connection id is 5975
+Server version: 8.0.35 Source distribution
+No default schema selected; type \use <schema> to set one.
+ MySQL  db.tris.id.au:3306 ssl  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  db.tris.id.au:3306 ssl  SQL > \.LabQuestion1.txt,
+Unknown command: '\.LabQuestion1.txt,'
+ MySQL  db.tris.id.au:3306 ssl  SQL > \.LabQuestion1.txt
+Unknown command: '\.LabQuestion1.txt'
+ MySQL  db.tris.id.au:3306 ssl  SQL > \.LabQuestion1.txt;
+Unknown command: '\.LabQuestion1.txt;'
+ MySQL  db.tris.id.au:3306 ssl  SQL > \.LabQuestion1
+Unknown command: '\.LabQuestion1'
+ MySQL  db.tris.id.au:3306 ssl  SQL > \.LabQuestion1;
+Unknown command: '\.LabQuestion1;'
+ MySQL  db.tris.id.au:3306 ssl  SQL > \.LabQuestion1.txt,
+Unknown command: '\.LabQuestion1.txt,'
+ MySQL  db.tris.id.au:3306 ssl  SQL > \. LabQuestion1.text
+Failed to open file 'LabQuestion1.text', error: No such file or directory
+ MySQL  db.tris.id.au:3306 ssl  SQL > \. LabQuestion1.text
+Failed to open file 'LabQuestion1.text', error: No such file or directory
+ MySQL  db.tris.id.au:3306 ssl  SQL > \. C:\Users\vishw\OneDrive\Desktop\LabQuestion1.txt
+Default schema set to `23852811_db`.
+Fetching table and column names from `23852811_db` for auto-completion... Press ^C to stop.
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM______' at line 1
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > \. C:\Users\vishw\OneDrive\Desktop\LabQuestion1.txt
+Default schema set to `23852811_db`.
+Fetching table and column names from `23852811_db` for auto-completion... Press ^C to stop.
++----+-----------------------+----------+------------+-------------+--------+
+| id | description           | quantity | unit_price | total_price | hasGst |
++----+-----------------------+----------+------------+-------------+--------+
+|  1 | Basic Widget          |        1 |     123.45 |      123.45 |      1 |
+|  2 | Basic Widget          |        1 |     123.45 |      123.45 |      1 |
+|  3 | Product               |        1 |       5.75 |        5.75 |      1 |
+|  4 | Other Service         |        2 |        100 |         200 |      0 |
+|  5 | Business Intellignece |        1 |        3.2 |          16 |      0 |
++----+-----------------------+----------+------------+-------------+--------+
+5 rows in set (0.0541 sec)
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > ALTER TABLE TransactionItem DROP COLUMN totalPrice;
+ERROR: 1091 (42000): Can't DROP 'totalPrice'; check that column/key exists
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > ALTER TABLE TransactionItem DROP COLUMN total_Price;
+Query OK, 0 rows affected (0.0737 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > ALTER TABLE TransactionItem ADD COLUMN totalPrice DECIMAL(10,2) AS (quantity * unitPrice);
+ERROR: 1054 (42S22): Unknown column 'unitPrice' in 'generated column function'
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > ALTER TABLE TransactionItem ADD COLUMN total_price DECIMAL(10,2) AS (quantity * unit_price);
+Query OK, 0 rows affected (0.0753 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > ALTER TABLE TransactionItem ADD COLUMN taxAmount DECIMAL(10,2) AS (tototal_price / 11);
+ERROR: 1054 (42S22): Unknown column 'tototal_price' in 'generated column function'
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > ALTER TABLE TransactionItem ADD COLUMN taxAmount DECIMAL(10,2) AS (total_price / 11);
+Query OK, 0 rows affected (0.1465 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > ALTER TABLE TransactionItem MODIFY COLUMN unitPrice DECIMAL(10,2) CHECK (unitPrice > 0);
+ERROR: 1054 (42S22): Unknown column 'unitPrice' in 'TransactionItem'
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > ALTER TABLE TransactionItem MODIFY COLUMN quantity INT CHECK (quantity > 0);
+Query OK, 5 rows affected, 16 warnings (0.1117 sec)
+
+Records: 5  Duplicates: 0  Warnings: 16
+Note (code 1265): Data truncated for column 'total_price' at row 1
+Note (code 1265): Data truncated for column 'taxAmount' at row 1
+Note (code 1265): Data truncated for column 'total_price' at row 1
+Note (code 1265): Data truncated for column 'taxAmount' at row 1
+Note (code 1265): Data truncated for column 'total_price' at row 2
+Note (code 1265): Data truncated for column 'taxAmount' at row 2
+Note (code 1265): Data truncated for column 'total_price' at row 2
+Note (code 1265): Data truncated for column 'taxAmount' at row 2
+Note (code 1265): Data truncated for column 'taxAmount' at row 3
+Note (code 1265): Data truncated for column 'taxAmount' at row 3
+Note (code 1265): Data truncated for column 'taxAmount' at row 4
+Note (code 1265): Data truncated for column 'taxAmount' at row 4
+Note (code 1265): Data truncated for column 'total_price' at row 5
+Note (code 1265): Data truncated for column 'taxAmount' at row 5
+Note (code 1265): Data truncated for column 'total_price' at row 5
+Note (code 1265): Data truncated for column 'taxAmount' at row 5
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > ALTER TABLE TransactionItem MODIFY COLUMN unitPrice DECIMAL(10,2) CHECK (unit_price > 0);
+ERROR: 3813 (HY000): Column check constraint 'TransactionItem_chk_2' references other column.
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > ALTER TABLE TransactionItem MODIFY COLUMN quantity INT CHECK (quantity > 0);
+Query OK, 5 rows affected, 16 warnings (0.1087 sec)
+
+Records: 5  Duplicates: 0  Warnings: 16
+Note (code 1265): Data truncated for column 'total_price' at row 1
+Note (code 1265): Data truncated for column 'taxAmount' at row 1
+Note (code 1265): Data truncated for column 'total_price' at row 1
+Note (code 1265): Data truncated for column 'taxAmount' at row 1
+Note (code 1265): Data truncated for column 'total_price' at row 2
+Note (code 1265): Data truncated for column 'taxAmount' at row 2
+Note (code 1265): Data truncated for column 'total_price' at row 2
+Note (code 1265): Data truncated for column 'taxAmount' at row 2
+Note (code 1265): Data truncated for column 'taxAmount' at row 3
+Note (code 1265): Data truncated for column 'taxAmount' at row 3
+Note (code 1265): Data truncated for column 'taxAmount' at row 4
+Note (code 1265): Data truncated for column 'taxAmount' at row 4
+Note (code 1265): Data truncated for column 'total_price' at row 5
+Note (code 1265): Data truncated for column 'taxAmount' at row 5
+Note (code 1265): Data truncated for column 'total_price' at row 5
+Note (code 1265): Data truncated for column 'taxAmount' at row 5
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > SELECT * FROM 23852811_db.TransactionItem;
++----+-----------------------+----------+------------+--------+-------------+-----------+
+| id | description           | quantity | unit_price | hasGst | total_price | taxAmount |
++----+-----------------------+----------+------------+--------+-------------+-----------+
+|  1 | Basic Widget          |        1 |     123.45 |      1 |      123.45 |     11.22 |
+|  2 | Basic Widget          |        1 |     123.45 |      1 |      123.45 |     11.22 |
+|  3 | Product               |        1 |       5.75 |      1 |        5.75 |      0.52 |
+|  4 | Other Service         |        2 |        100 |      0 |      200.00 |     18.18 |
+|  5 | Business Intellignece |        1 |        3.2 |      0 |        3.20 |      0.29 |
++----+-----------------------+----------+------------+--------+-------------+-----------+
+5 rows in set (0.1635 sec)
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > ALTER TABLE TransactionItem MODIFY COLUMN unit_price DECIMAL(10,2) CHECK (unit_price > 0);
+Query OK, 5 rows affected, 16 warnings (2.5665 sec)
+
+Records: 5  Duplicates: 0  Warnings: 16
+Note (code 1265): Data truncated for column 'total_price' at row 1
+Note (code 1265): Data truncated for column 'taxAmount' at row 1
+Note (code 1265): Data truncated for column 'unit_price' at row 1
+Note (code 1265): Data truncated for column 'taxAmount' at row 1
+Note (code 1265): Data truncated for column 'total_price' at row 2
+Note (code 1265): Data truncated for column 'taxAmount' at row 2
+Note (code 1265): Data truncated for column 'unit_price' at row 2
+Note (code 1265): Data truncated for column 'taxAmount' at row 2
+Note (code 1265): Data truncated for column 'taxAmount' at row 3
+Note (code 1265): Data truncated for column 'taxAmount' at row 3
+Note (code 1265): Data truncated for column 'taxAmount' at row 4
+Note (code 1265): Data truncated for column 'taxAmount' at row 4
+Note (code 1265): Data truncated for column 'total_price' at row 5
+Note (code 1265): Data truncated for column 'taxAmount' at row 5
+Note (code 1265): Data truncated for column 'unit_price' at row 5
+Note (code 1265): Data truncated for column 'taxAmount' at row 5
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > ALTER TABLE TransactionItem MODIFY COLUMN quantity INT CHECK (quantity > 0);
+Query OK, 5 rows affected, 10 warnings (0.2023 sec)
+
+Records: 5  Duplicates: 0  Warnings: 10
+Note (code 1265): Data truncated for column 'taxAmount' at row 1
+Note (code 1265): Data truncated for column 'taxAmount' at row 1
+Note (code 1265): Data truncated for column 'taxAmount' at row 2
+Note (code 1265): Data truncated for column 'taxAmount' at row 2
+Note (code 1265): Data truncated for column 'taxAmount' at row 3
+Note (code 1265): Data truncated for column 'taxAmount' at row 3
+Note (code 1265): Data truncated for column 'taxAmount' at row 4
+Note (code 1265): Data truncated for column 'taxAmount' at row 4
+Note (code 1265): Data truncated for column 'taxAmount' at row 5
+Note (code 1265): Data truncated for column 'taxAmount' at row 5
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > SELECT * FROM 23852811_db.TransactionItem;
++----+-----------------------+----------+------------+--------+-------------+-----------+
+| id | description           | quantity | unit_price | hasGst | total_price | taxAmount |
++----+-----------------------+----------+------------+--------+-------------+-----------+
+|  1 | Basic Widget          |        1 |     123.45 |      1 |      123.45 |     11.22 |
+|  2 | Basic Widget          |        1 |     123.45 |      1 |      123.45 |     11.22 |
+|  3 | Product               |        1 |       5.75 |      1 |        5.75 |      0.52 |
+|  4 | Other Service         |        2 |     100.00 |      0 |      200.00 |     18.18 |
+|  5 | Business Intellignece |        1 |       3.20 |      0 |        3.20 |      0.29 |
++----+-----------------------+----------+------------+--------+-------------+-----------+
+5 rows in set (0.1352 sec)
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > ALTER TABLE TransactionItem ADD COLUMN hasGst BOOLEAN DEFAULT FALSE;
+ERROR: 1060 (42S21): Duplicate column name 'hasGst'
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > ALTER TABLE TransactionItem MODIFY COLUMN description VARCHAR(255) NOT NULL;
+Query OK, 5 rows affected, 10 warnings (0.1740 sec)
+
+Records: 5  Duplicates: 0  Warnings: 10
+Note (code 1265): Data truncated for column 'taxAmount' at row 1
+Note (code 1265): Data truncated for column 'taxAmount' at row 1
+Note (code 1265): Data truncated for column 'taxAmount' at row 2
+Note (code 1265): Data truncated for column 'taxAmount' at row 2
+Note (code 1265): Data truncated for column 'taxAmount' at row 3
+Note (code 1265): Data truncated for column 'taxAmount' at row 3
+Note (code 1265): Data truncated for column 'taxAmount' at row 4
+Note (code 1265): Data truncated for column 'taxAmount' at row 4
+Note (code 1265): Data truncated for column 'taxAmount' at row 5
+Note (code 1265): Data truncated for column 'taxAmount' at row 5
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > SELECT description, unit_price FROM TransactionItem WHERE unitPrice > 110;
+ERROR: 1054 (42S22): Unknown column 'unitPrice' in 'where clause'
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > SELECT description, unit_price FROM TransactionItem WHERE unit_price > 110;
++--------------+------------+
+| description  | unit_price |
++--------------+------------+
+| Basic Widget |     123.45 |
+| Basic Widget |     123.45 |
++--------------+------------+
+2 rows in set (0.1722 sec)
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > SELECT * FROM 23852811_db.TransactionItem;
++----+-----------------------+----------+------------+--------+-------------+-----------+
+| id | description           | quantity | unit_price | hasGst | total_price | taxAmount |
++----+-----------------------+----------+------------+--------+-------------+-----------+
+|  1 | Basic Widget          |        1 |     123.45 |      1 |      123.45 |     11.22 |
+|  2 | Basic Widget          |        1 |     123.45 |      1 |      123.45 |     11.22 |
+|  3 | Product               |        1 |       5.75 |      1 |        5.75 |      0.52 |
+|  4 | Other Service         |        2 |     100.00 |      0 |      200.00 |     18.18 |
+|  5 | Business Intellignece |        1 |       3.20 |      0 |        3.20 |      0.29 |
++----+-----------------------+----------+------------+--------+-------------+-----------+
+5 rows in set (0.1478 sec)
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > SELECT * FROM TransactionItem WHERE quantity <> 1;
++----+---------------+----------+------------+--------+-------------+-----------+
+| id | description   | quantity | unit_price | hasGst | total_price | taxAmount |
++----+---------------+----------+------------+--------+-------------+-----------+
+|  4 | Other Service |        2 |     100.00 |      0 |      200.00 |     18.18 |
++----+---------------+----------+------------+--------+-------------+-----------+
+1 row in set (0.0870 sec)
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > SELECT description FROM TransactionItem WHERE description LIKE 'B%';
++-----------------------+
+| description           |
++-----------------------+
+| Basic Widget          |
+| Basic Widget          |
+| Business Intellignece |
++-----------------------+
+3 rows in set (0.0951 sec)
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > SELECT description, unitPrice FROM TransactionItem WHERE unitPrice < 201 AND hasGst = TRUE;
+ERROR: 1054 (42S22): Unknown column 'unitPrice' in 'field list'
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > SELECT description, unit_price FROM TransactionItem WHERE unitPrice < 201 AND hasGst = TRUE;
+ERROR: 1054 (42S22): Unknown column 'unitPrice' in 'where clause'
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > SELECT description, unit_price FROM TransactionItem WHERE unit_price < 201 AND hasGst = TRUE;
++--------------+------------+
+| description  | unit_price |
++--------------+------------+
+| Basic Widget |     123.45 |
+| Basic Widget |     123.45 |
+| Product      |       5.75 |
++--------------+------------+
+3 rows in set (0.0995 sec)
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > SELECT description, unit_price FROM TransactionItem WHERE unit_price < 201 AND hasGst = TRUE;
++--------------+------------+
+| description  | unit_price |
++--------------+------------+
+| Basic Widget |     123.45 |
+| Basic Widget |     123.45 |
+| Product      |       5.75 |
++--------------+------------+
+3 rows in set (0.1392 sec)
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > CREATE TABLE Transaction (
+                                                ->     id INT PRIMARY KEY,
+                                                ->     date DATE,
+                                                ->     customerName VARCHAR(255),
+                                                ->     transactionItemId INT,
+                                                ->     FOREIGN KEY (transactionItemId) REFERENCES TransactionItem(id)
+                                                -> );
+Query OK, 0 rows affected (0.1095 sec)
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL >
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > INSERT INTO Transaction (id, date, customerName, transactionItemId) VALUES
+                                                -> (1, '2022-01-01', 'Example Corporation', 4),
+                                                -> (2, '2022-04-01', 'Nikola Limited', 2),
+                                                -> (3, '2023-04-01', 'Pear Computers', 1),
+                                                -> (4, '2023-07-31', 'Western Mining', 3);
+Query OK, 4 rows affected (0.1195 sec)
+
+Records: 4  Duplicates: 0  Warnings: 0
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > SELECT * FROM 23852811_db.TransactionItem;
++----+-----------------------+----------+------------+--------+-------------+-----------+
+| id | description           | quantity | unit_price | hasGst | total_price | taxAmount |
++----+-----------------------+----------+------------+--------+-------------+-----------+
+|  1 | Basic Widget          |        1 |     123.45 |      1 |      123.45 |     11.22 |
+|  2 | Basic Widget          |        1 |     123.45 |      1 |      123.45 |     11.22 |
+|  3 | Product               |        1 |       5.75 |      1 |        5.75 |      0.52 |
+|  4 | Other Service         |        2 |     100.00 |      0 |      200.00 |     18.18 |
+|  5 | Business Intellignece |        1 |       3.20 |      0 |        3.20 |      0.29 |
++----+-----------------------+----------+------------+--------+-------------+-----------+
+5 rows in set (0.0930 sec)
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > SELECT * FROM 23852811_db.Transaction:
+                                                ->
+                                                -> SELECT * FROM 23852811_db.Transaction;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':
+SELECT * FROM 23852811_db.Transaction' at line 1
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > SELECT * FROM 23852811_db.Transaction;
++----+------------+---------------------+-------------------+
+| id | date       | customerName        | transactionItemId |
++----+------------+---------------------+-------------------+
+|  1 | 2022-01-01 | Example Corporation |                 4 |
+|  2 | 2022-04-01 | Nikola Limited      |                 2 |
+|  3 | 2023-04-01 | Pear Computers      |                 1 |
+|  4 | 2023-07-31 | Western Mining      |                 3 |
++----+------------+---------------------+-------------------+
+4 rows in set (0.0937 sec)
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > CREATE INDEX idx_transaction_id ON Transaction(id);
+Query OK, 0 rows affected (0.1494 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > CREATE INDEX idx_transactionItem_id ON TransactionItem(id);
+Query OK, 0 rows affected (0.1892 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > SELECT * FROM 23852811_db.TransactionItem;
++----+-----------------------+----------+------------+--------+-------------+-----------+
+| id | description           | quantity | unit_price | hasGst | total_price | taxAmount |
++----+-----------------------+----------+------------+--------+-------------+-----------+
+|  1 | Basic Widget          |        1 |     123.45 |      1 |      123.45 |     11.22 |
+|  2 | Basic Widget          |        1 |     123.45 |      1 |      123.45 |     11.22 |
+|  3 | Product               |        1 |       5.75 |      1 |        5.75 |      0.52 |
+|  4 | Other Service         |        2 |     100.00 |      0 |      200.00 |     18.18 |
+|  5 | Business Intellignece |        1 |       3.20 |      0 |        3.20 |      0.29 |
++----+-----------------------+----------+------------+--------+-------------+-----------+
+5 rows in set (0.0834 sec)
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > SELECT * FROM 23852811_db.Transaction;
++----+------------+---------------------+-------------------+
+| id | date       | customerName        | transactionItemId |
++----+------------+---------------------+-------------------+
+|  1 | 2022-01-01 | Example Corporation |                 4 |
+|  2 | 2022-04-01 | Nikola Limited      |                 2 |
+|  3 | 2023-04-01 | Pear Computers      |                 1 |
+|  4 | 2023-07-31 | Western Mining      |                 3 |
++----+------------+---------------------+-------------------+
+4 rows in set (0.1750 sec)
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL > SELECT CONSTRAINT_NAME, TABLE_SCHEMA, CONSTRAINT_TYPE FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE TABLE_SCHEMA = '23852811_db';
++-----------------------+--------------+-----------------+
+| CONSTRAINT_NAME       | TABLE_SCHEMA | CONSTRAINT_TYPE |
++-----------------------+--------------+-----------------+
+| PRIMARY               | 23852811_db  | PRIMARY KEY     |
+| Transaction_ibfk_1    | 23852811_db  | FOREIGN KEY     |
+| PRIMARY               | 23852811_db  | PRIMARY KEY     |
+| TransactionItem_chk_1 | 23852811_db  | CHECK           |
+| TransactionItem_chk_2 | 23852811_db  | CHECK           |
+| TransactionItem_chk_3 | 23852811_db  | CHECK           |
+| TransactionItem_chk_4 | 23852811_db  | CHECK           |
++-----------------------+--------------+-----------------+
+7 rows in set (0.1270 sec)
+ MySQL  db.tris.id.au:3306 ssl  23852811_db  SQL >

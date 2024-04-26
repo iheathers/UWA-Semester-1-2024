@@ -1,0 +1,501 @@
++-------------+--------------+------+-----+---------+-------------------+
+| Field       | Type         | Null | Key | Default | Extra             |
++-------------+--------------+------+-----+---------+-------------------+
+| id          | int          | NO   | PRI | NULL    | auto_increment    |
+| description | varchar(255) | NO   |     | NULL    |                   |
+| quantity    | int          | YES  |     | NULL    |                   |
+| unit_price  | float        | YES  |     | NULL    |                   |
+| hasGst      | tinyint(1)   | YES  |     | 0       |                   |
+| total_price | float        | YES  |     | NULL    | VIRTUAL GENERATED |
+| taxAmount   | float        | YES  |     | NULL    | VIRTUAL GENERATED |
++-------------+--------------+------+-----+---------+-------------------+
+
+
+
+\pager cat
+
+
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \connect 23771397@db.tris.id.au
+Creating a session to '23771397@db.tris.id.au'
+Fetching schema names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 11784
+Server version: 8.0.35 Source distribution
+No default schema selected; type \use <schema> to set one.
+ MySQL  db.tris.id.au:3306 ssl  JS > \sql
+Switching to SQL mode... Commands end with ;
+Fetching global names for auto-completion... Press ^C to stop.
+Error during auto-completion cache update: Access denied; you need (at least one of) the PROCESS privilege(s) for this operation
+ MySQL  db.tris.id.au:3306 ssl  SQL > describe database;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+ MySQL  db.tris.id.au:3306 ssl  SQL > SHOW TABLES;
+ERROR: 1046 (3D000): No database selected
+ MySQL  db.tris.id.au:3306 ssl  SQL > USE 23771397_db;
+Default schema set to `23771397_db`.
+Fetching global names, object names from `23771397_db` for auto-completion... Press ^C to stop.
+Error during auto-completion cache update: Access denied; you need (at least one of) the PROCESS privilege(s) for this operation
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SHOW TABLES
+                                                -> ;
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > DESCRIBE TransacitonItem;
+ERROR: 1146 (42S02): Table '23771397_db.TransacitonItem' doesn't exist
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > DESCRIBE TransactionItem;
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > INSERT INTO TransactionItem (description, quantity, unit_price, hasGst) VALUES ("Improved Widget", 3, 9.99, TRUE);
+Query OK, 1 row affected (0.0656 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SHOW * FROM TransactionItem;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* FROM TransactionItem' at line 1
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SHOW * FROM TransactionItem;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* FROM TransactionItem' at line 1
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT * FROM TransactionItem;
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > \pager cat
+Pager has been set to 'cat'.
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > \pager cat
+Pager has been set to 'cat'.
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT * FROM TransactionItem;
++----+-----------------------+----------+------------+--------+-------------+-----------+
+| id | description           | quantity | unit_price | hasGst | total_price | taxAmount |
++----+-----------------------+----------+------------+--------+-------------+-----------+
+|  1 | Basic Widget          |        1 |     123.45 |      1 |      123.45 |   11.2227 |
+|  2 | Product B             |        1 |     199.95 |      1 |      199.95 |   18.1773 |
+|  3 | Other Service         |        2 |        100 |      0 |         200 |   18.1818 |
+|  4 | Business Intelligence |        1 |      42.42 |      0 |       42.42 |   3.85636 |
+|  5 | Improved Widget       |        3 |       9.99 |      1 |       29.97 |   2.72455 |
++----+-----------------------+----------+------------+--------+-------------+-----------+
+5 rows in set (0.0578 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT * FROM TransactionItem;
++----+-----------------------+----------+------------+--------+-------------+-----------+
+| id | description           | quantity | unit_price | hasGst | total_price | taxAmount |
++----+-----------------------+----------+------------+--------+-------------+-----------+
+|  1 | Basic Widget          |        1 |     123.45 |      1 |      123.45 |   11.2227 |
+|  2 | Product B             |        1 |     199.95 |      1 |      199.95 |   18.1773 |
+|  3 | Other Service         |        2 |        100 |      0 |         200 |   18.1818 |
+|  4 | Business Intelligence |        1 |      42.42 |      0 |       42.42 |   3.85636 |
+|  5 | Improved Widget       |        3 |       9.99 |      1 |       29.97 |   2.72455 |
++----+-----------------------+----------+------------+--------+-------------+-----------+
+5 rows in set (0.0687 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT * FROM Transaction;
++----+------------+---------------------+-------------------+
+| id | date       | customerName        | transactionItemId |
++----+------------+---------------------+-------------------+
+|  1 | 2022-01-01 | Example Corporation |                 4 |
+|  2 | 2022-04-01 | Nikola Limited      |                 2 |
+|  3 | 2023-04-01 | Pear Computers      |                 1 |
+|  4 | 2023-07-31 | Western Mining      |                 3 |
++----+------------+---------------------+-------------------+
+4 rows in set (0.0589 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT * 
+                                                -> FROM TransactionItem 
+                                                -> JOIN Transaction
+                                                -> ON Transaction.id = TransactionItem.id;
++----+-----------------------+----------+------------+--------+-------------+-----------+----+------------+---------------------+-------------------+
+| id | description           | quantity | unit_price | hasGst | total_price | taxAmount | id | date       | customerName        | transactionItemId |
++----+-----------------------+----------+------------+--------+-------------+-----------+----+------------+---------------------+-------------------+
+|  1 | Basic Widget          |        1 |     123.45 |      1 |      123.45 |   11.2227 |  1 | 2022-01-01 | Example Corporation |                 4 |
+|  2 | Product B             |        1 |     199.95 |      1 |      199.95 |   18.1773 |  2 | 2022-04-01 | Nikola Limited      |                 2 |
+|  3 | Other Service         |        2 |        100 |      0 |         200 |   18.1818 |  3 | 2023-04-01 | Pear Computers      |                 1 |
+|  4 | Business Intelligence |        1 |      42.42 |      0 |       42.42 |   3.85636 |  4 | 2023-07-31 | Western Mining      |                 3 |
++----+-----------------------+----------+------------+--------+-------------+-----------+----+------------+---------------------+-------------------+
+4 rows in set (0.0561 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT * 
+                                                -> FROM TransactionItem
+                                                -> SELECT * FROM TransactionItem;^C
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT *  FROM Transaction  JOIN TransactionItem ON Transaction.id = TransactionItem.id;
++----+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+| id | date       | customerName        | transactionItemId | id | description           | quantity | unit_price | hasGst | total_price | taxAmount |
++----+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+|  1 | 2022-01-01 | Example Corporation |                 4 |  1 | Basic Widget          |        1 |     123.45 |      1 |      123.45 |   11.2227 |
+|  2 | 2022-04-01 | Nikola Limited      |                 2 |  2 | Product B             |        1 |     199.95 |      1 |      199.95 |   18.1773 |
+|  3 | 2023-04-01 | Pear Computers      |                 1 |  3 | Other Service         |        2 |        100 |      0 |         200 |   18.1818 |
+|  4 | 2023-07-31 | Western Mining      |                 3 |  4 | Business Intelligence |        1 |      42.42 |      0 |       42.42 |   3.85636 |
++----+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+4 rows in set (0.0534 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT *  FROM Transaction RIGHT JOIN TransactionItem ON Transaction.id = TransactionItem.id;
++------+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+| id   | date       | customerName        | transactionItemId | id | description           | quantity | unit_price | hasGst | total_price | taxAmount |
++------+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+|    1 | 2022-01-01 | Example Corporation |                 4 |  1 | Basic Widget          |        1 |     123.45 |      1 |      123.45 |   11.2227 |
+|    2 | 2022-04-01 | Nikola Limited      |                 2 |  2 | Product B             |        1 |     199.95 |      1 |      199.95 |   18.1773 |
+|    3 | 2023-04-01 | Pear Computers      |                 1 |  3 | Other Service         |        2 |        100 |      0 |         200 |   18.1818 |
+|    4 | 2023-07-31 | Western Mining      |                 3 |  4 | Business Intelligence |        1 |      42.42 |      0 |       42.42 |   3.85636 |
+| NULL | NULL       | NULL                |              NULL |  5 | Improved Widget       |        3 |       9.99 |      1 |       29.97 |   2.72455 |
++------+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+5 rows in set (0.0590 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT *  FROM Transaction LEFT JOIN TransactionItem ON Transaction.id = TransactionItem.id;
++----+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+| id | date       | customerName        | transactionItemId | id | description           | quantity | unit_price | hasGst | total_price | taxAmount |
++----+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+|  1 | 2022-01-01 | Example Corporation |                 4 |  1 | Basic Widget          |        1 |     123.45 |      1 |      123.45 |   11.2227 |
+|  2 | 2022-04-01 | Nikola Limited      |                 2 |  2 | Product B             |        1 |     199.95 |      1 |      199.95 |   18.1773 |
+|  3 | 2023-04-01 | Pear Computers      |                 1 |  3 | Other Service         |        2 |        100 |      0 |         200 |   18.1818 |
+|  4 | 2023-07-31 | Western Mining      |                 3 |  4 | Business Intelligence |        1 |      42.42 |      0 |       42.42 |   3.85636 |
++----+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+4 rows in set (0.0534 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT *  FROM Transaction  JOIN TransactionItem ON Transaction.transactionItemId = TransactionItem.id;
++----+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+| id | date       | customerName        | transactionItemId | id | description           | quantity | unit_price | hasGst | total_price | taxAmount |
++----+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+|  1 | 2022-01-01 | Example Corporation |                 4 |  4 | Business Intelligence |        1 |      42.42 |      0 |       42.42 |   3.85636 |
+|  2 | 2022-04-01 | Nikola Limited      |                 2 |  2 | Product B             |        1 |     199.95 |      1 |      199.95 |   18.1773 |
+|  3 | 2023-04-01 | Pear Computers      |                 1 |  1 | Basic Widget          |        1 |     123.45 |      1 |      123.45 |   11.2227 |
+|  4 | 2023-07-31 | Western Mining      |                 3 |  3 | Other Service         |        2 |        100 |      0 |         200 |   18.1818 |
++----+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+4 rows in set (0.0516 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT *  FROM Transaction  JOIN TransactionItem ON Transaction.id = TransactionItem.id;
++----+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+| id | date       | customerName        | transactionItemId | id | description           | quantity | unit_price | hasGst | total_price | taxAmount |
++----+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+|  1 | 2022-01-01 | Example Corporation |                 4 |  1 | Basic Widget          |        1 |     123.45 |      1 |      123.45 |   11.2227 |
+|  2 | 2022-04-01 | Nikola Limited      |                 2 |  2 | Product B             |        1 |     199.95 |      1 |      199.95 |   18.1773 |
+|  3 | 2023-04-01 | Pear Computers      |                 1 |  3 | Other Service         |        2 |        100 |      0 |         200 |   18.1818 |
+|  4 | 2023-07-31 | Western Mining      |                 3 |  4 | Business Intelligence |        1 |      42.42 |      0 |       42.42 |   3.85636 |
++----+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+4 rows in set (0.0591 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT *  FROM Transaction  JOIN TransactionItem ON Transaction.transactionItemId = TransactionItem.id;
++----+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+| id | date       | customerName        | transactionItemId | id | description           | quantity | unit_price | hasGst | total_price | taxAmount |
++----+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+|  1 | 2022-01-01 | Example Corporation |                 4 |  4 | Business Intelligence |        1 |      42.42 |      0 |       42.42 |   3.85636 |
+|  2 | 2022-04-01 | Nikola Limited      |                 2 |  2 | Product B             |        1 |     199.95 |      1 |      199.95 |   18.1773 |
+|  3 | 2023-04-01 | Pear Computers      |                 1 |  1 | Basic Widget          |        1 |     123.45 |      1 |      123.45 |   11.2227 |
+|  4 | 2023-07-31 | Western Mining      |                 3 |  3 | Other Service         |        2 |        100 |      0 |         200 |   18.1818 |
++----+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+4 rows in set (0.0582 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT *  FROM Transaction INNER JOIN TransactionItem ON Transaction.transactionItemId = TransactionItem.id;
++----+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+| id | date       | customerName        | transactionItemId | id | description           | quantity | unit_price | hasGst | total_price | taxAmount |
++----+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+|  1 | 2022-01-01 | Example Corporation |                 4 |  4 | Business Intelligence |        1 |      42.42 |      0 |       42.42 |   3.85636 |
+|  2 | 2022-04-01 | Nikola Limited      |                 2 |  2 | Product B             |        1 |     199.95 |      1 |      199.95 |   18.1773 |
+|  3 | 2023-04-01 | Pear Computers      |                 1 |  1 | Basic Widget          |        1 |     123.45 |      1 |      123.45 |   11.2227 |
+|  4 | 2023-07-31 | Western Mining      |                 3 |  3 | Other Service         |        2 |        100 |      0 |         200 |   18.1818 |
++----+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+4 rows in set (0.0497 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT *  FROM Transaction RIGHT JOIN TransactionItem ON Transaction.transactionItemId = TransactionItem.id;
++------+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+| id   | date       | customerName        | transactionItemId | id | description           | quantity | unit_price | hasGst | total_price | taxAmount |
++------+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+|    3 | 2023-04-01 | Pear Computers      |                 1 |  1 | Basic Widget          |        1 |     123.45 |      1 |      123.45 |   11.2227 |
+|    2 | 2022-04-01 | Nikola Limited      |                 2 |  2 | Product B             |        1 |     199.95 |      1 |      199.95 |   18.1773 |
+|    4 | 2023-07-31 | Western Mining      |                 3 |  3 | Other Service         |        2 |        100 |      0 |         200 |   18.1818 |
+|    1 | 2022-01-01 | Example Corporation |                 4 |  4 | Business Intelligence |        1 |      42.42 |      0 |       42.42 |   3.85636 |
+| NULL | NULL       | NULL                |              NULL |  5 | Improved Widget       |        3 |       9.99 |      1 |       29.97 |   2.72455 |
++------+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+5 rows in set (0.0585 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT *  FROM Transaction LEFT JOIN TransactionItem ON Transaction.transactionItemId = TransactionItem.id;
++----+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+| id | date       | customerName        | transactionItemId | id | description           | quantity | unit_price | hasGst | total_price | taxAmount |
++----+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+|  1 | 2022-01-01 | Example Corporation |                 4 |  4 | Business Intelligence |        1 |      42.42 |      0 |       42.42 |   3.85636 |
+|  2 | 2022-04-01 | Nikola Limited      |                 2 |  2 | Product B             |        1 |     199.95 |      1 |      199.95 |   18.1773 |
+|  3 | 2023-04-01 | Pear Computers      |                 1 |  1 | Basic Widget          |        1 |     123.45 |      1 |      123.45 |   11.2227 |
+|  4 | 2023-07-31 | Western Mining      |                 3 |  3 | Other Service         |        2 |        100 |      0 |         200 |   18.1818 |
++----+------------+---------------------+-------------------+----+-----------------------+----------+------------+--------+-------------+-----------+
+4 rows in set (0.0579 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > CREATE VIEW TransactionWithItems 
+                                                -> AS
+                                                -> SELECT *
+                                                -> TransactionItem 
+                                                -> JOIN Transaction
+                                                -> ON TransactionItem.id = Transaction.transactionItemId;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'TransactionItem 
+JOIN Transaction
+ON TransactionItem.id = Transaction.transactio' at line 4
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > CREATE VIEW TransactionWithItems  AS SELECT * FROM TransactionItem  JOIN Transaction ON TransactionItem.id = Transaction.transactionItemId;
+ERROR: 1060 (42S21): Duplicate column name 'id'
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > CREATE VIEW TransactionWithItems 
+                                                -> AS 
+                                                -> SELECT Transaction.*, Transaction.id as tran_id, TransactionItem.id as tran_item_id
+                                                -> FROM Transaction
+                                                -> ON TransactionItem.id = Transaction.transactionItemId;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ON TransactionItem.id = Transaction.transactionItemId' at line 5
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > CREATE VIEW TransactionWithItems  AS  SELECT Transaction.*, Transaction.id as tran_id, TransactionItem.id as tran_item_id FROM Transaction JOIN TransactionItem ON TransactionItem.id = Transaction.transactionItemId;
+Query OK, 0 rows affected (0.0645 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SHOW TABLES;
++-----------------------+
+| Tables_in_23771397_db |
++-----------------------+
+| Transaction           |
+| TransactionItem       |
+| TransactionWithItems  |
++-----------------------+
+3 rows in set (0.0526 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT * TransactionWithItems;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'TransactionWithItems' at line 1
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT * FRM TransactionWithItems;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FRM TransactionWithItems' at line 1
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT * FROM TransactionWithItems;
++----+------------+---------------------+-------------------+---------+--------------+
+| id | date       | customerName        | transactionItemId | tran_id | tran_item_id |
++----+------------+---------------------+-------------------+---------+--------------+
+|  1 | 2022-01-01 | Example Corporation |                 4 |       1 |            4 |
+|  2 | 2022-04-01 | Nikola Limited      |                 2 |       2 |            2 |
+|  3 | 2023-04-01 | Pear Computers      |                 1 |       3 |            1 |
+|  4 | 2023-07-31 | Western Mining      |                 3 |       4 |            3 |
++----+------------+---------------------+-------------------+---------+--------------+
+4 rows in set (0.0561 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > DESCRIBE TransactionWithItems;
++-------------------+--------------+------+-----+---------+-------+
+| Field             | Type         | Null | Key | Default | Extra |
++-------------------+--------------+------+-----+---------+-------+
+| id                | int          | NO   |     | NULL    |       |
+| date              | date         | YES  |     | NULL    |       |
+| customerName      | varchar(255) | YES  |     | NULL    |       |
+| transactionItemId | int          | YES  |     | NULL    |       |
+| tran_id           | int          | NO   |     | NULL    |       |
+| tran_item_id      | int          | NO   |     | 0       |       |
++-------------------+--------------+------+-----+---------+-------+
+6 rows in set (0.0567 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SHOW CREATE VIEW TransactionWithItems;
++----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+| View                 | Create View                                                                                                                                                                                                                                                                                                                                                                                                                                                          | character_set_client | collation_connection |
++----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+| TransactionWithItems | CREATE ALGORITHM=UNDEFINED DEFINER=`23771397`@`%` SQL SECURITY DEFINER VIEW `TransactionWithItems` AS select `Transaction`.`id` AS `id`,`Transaction`.`date` AS `date`,`Transaction`.`customerName` AS `customerName`,`Transaction`.`transactionItemId` AS `transactionItemId`,`Transaction`.`id` AS `tran_id`,`TransactionItem`.`id` AS `tran_item_id` from (`Transaction` join `TransactionItem` on((`TransactionItem`.`id` = `Transaction`.`transactionItemId`))) | utf8mb4              | utf8mb4_0900_ai_ci   |
++----------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+----------------------+
+1 row in set (0.0549 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > DESCRIBE TransactionWithItems;
++-------------------+--------------+------+-----+---------+-------+
+| Field             | Type         | Null | Key | Default | Extra |
++-------------------+--------------+------+-----+---------+-------+
+| id                | int          | NO   |     | NULL    |       |
+| date              | date         | YES  |     | NULL    |       |
+| customerName      | varchar(255) | YES  |     | NULL    |       |
+| transactionItemId | int          | YES  |     | NULL    |       |
+| tran_id           | int          | NO   |     | NULL    |       |
+| tran_item_id      | int          | NO   |     | 0       |       |
++-------------------+--------------+------+-----+---------+-------+
+6 rows in set (0.0589 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > CREATE VIEW GstOnlyItems 
+                                                -> AS 
+                                                -> SELECT Transaction.*, Transaction.id as tran_id, TransactionItem.*,  TransactionItem.id as tran_item_id 
+                                                -> FROM Transaction
+                                                -> JOIN TransactionItem
+                                                -> ON ^C
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > CREATE VIEW GstOnlyItems
+                                                -> AS 
+                                                -> SELECT * FROM TransactionItem
+                                                -> WHERE hasGst = True;
+Query OK, 0 rows affected (0.0653 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SHOW TABLES;
++-----------------------+
+| Tables_in_23771397_db |
++-----------------------+
+| GstOnlyItems          |
+| Transaction           |
+| TransactionItem       |
+| TransactionWithItems  |
++-----------------------+
+4 rows in set (0.0497 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT * FROM GstOnlyItems;
++----+-----------------+----------+------------+--------+-------------+-----------+
+| id | description     | quantity | unit_price | hasGst | total_price | taxAmount |
++----+-----------------+----------+------------+--------+-------------+-----------+
+|  1 | Basic Widget    |        1 |     123.45 |      1 |      123.45 |   11.2227 |
+|  2 | Product B       |        1 |     199.95 |      1 |      199.95 |   18.1773 |
+|  5 | Improved Widget |        3 |       9.99 |      1 |       29.97 |   2.72455 |
++----+-----------------+----------+------------+--------+-------------+-----------+
+3 rows in set (0.0579 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT * FROM TransactionItem;
++----+-----------------------+----------+------------+--------+-------------+-----------+
+| id | description           | quantity | unit_price | hasGst | total_price | taxAmount |
++----+-----------------------+----------+------------+--------+-------------+-----------+
+|  1 | Basic Widget          |        1 |     123.45 |      1 |      123.45 |   11.2227 |
+|  2 | Product B             |        1 |     199.95 |      1 |      199.95 |   18.1773 |
+|  3 | Other Service         |        2 |        100 |      0 |         200 |   18.1818 |
+|  4 | Business Intelligence |        1 |      42.42 |      0 |       42.42 |   3.85636 |
+|  5 | Improved Widget       |        3 |       9.99 |      1 |       29.97 |   2.72455 |
++----+-----------------------+----------+------------+--------+-------------+-----------+
+5 rows in set (0.0575 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT * FROM Transaction;
++----+------------+---------------------+-------------------+
+| id | date       | customerName        | transactionItemId |
++----+------------+---------------------+-------------------+
+|  1 | 2022-01-01 | Example Corporation |                 4 |
+|  2 | 2022-04-01 | Nikola Limited      |                 2 |
+|  3 | 2023-04-01 | Pear Computers      |                 1 |
+|  4 | 2023-07-31 | Western Mining      |                 3 |
++----+------------+---------------------+-------------------+
+4 rows in set (0.0559 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > DESCRIBE Transaction;
++-------------------+--------------+------+-----+---------+-------+
+| Field             | Type         | Null | Key | Default | Extra |
++-------------------+--------------+------+-----+---------+-------+
+| id                | int          | NO   | PRI | NULL    |       |
+| date              | date         | YES  |     | NULL    |       |
+| customerName      | varchar(255) | YES  |     | NULL    |       |
+| transactionItemId | int          | YES  | MUL | NULL    |       |
++-------------------+--------------+------+-----+---------+-------+
+4 rows in set (0.0606 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT * FROM Transaction 
+                                                -> WHERE MONTH(data) = 1;
+ERROR: 1054 (42S22): Unknown column 'data' in 'where clause'
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT * FROM Transaction  WHERE MONTH(date) = 1;
++----+------------+---------------------+-------------------+
+| id | date       | customerName        | transactionItemId |
++----+------------+---------------------+-------------------+
+|  1 | 2022-01-01 | Example Corporation |                 4 |
++----+------------+---------------------+-------------------+
+1 row in set (0.0500 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > CREATE VIEW JanaCREATE VIEW TransactionWithItems  AS  SELECT Transaction.*, Transaction.id as tran_id, TransactionItem.* TransactionItem.id as tran_item_id FROM Transaction JOIN TransactionItem ON TransactionItem.id = Transaction.transactionItemId;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'VIEW TransactionWithItems  AS  SELECT Transaction.*, Transaction.id as tran_id, ' at line 1
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > DROP TransactionWithItems;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'TransactionWithItems' at line 1
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > DROP VIEW TransactionWithItems;
+Query OK, 0 rows affected (0.0640 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > show tables;
++-----------------------+
+| Tables_in_23771397_db |
++-----------------------+
+| GstOnlyItems          |
+| Transaction           |
+| TransactionItem       |
++-----------------------+
+3 rows in set (0.0580 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > CREATE VIEW JanaCREATE VIEW TransactionWithItems  AS  SELECT Transaction.*, Transaction.id as tran_id, TransactionItem.* TransactionItem.id as tran_item_id FROM Transaction JOIN TransactionItem ON TransactionItem.id = Transaction.transactionItemId;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'VIEW TransactionWithItems  AS  SELECT Transaction.*, Transaction.id as tran_id, ' at line 1
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > CREATE VIEW JanaCREATE VIEW TransactionWithItems  AS  SELECT Transaction.*, Transaction.id as tran_id, TransactionItem.*, TransactionItem.id as tran_item_id FROM Transaction JOIN TransactionItem ON TransactionItem.id = Transaction.transactionItemId;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'VIEW TransactionWithItems  AS  SELECT Transaction.*, Transaction.id as tran_id, ' at line 1
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > CREATE VIEW TransactionWithItems  AS  SELECT Transaction.*, Transaction.id as tran_id, TransactionItem.*, TransactionItem.id as tran_item_id FROM Transaction JOIN TransactionItem ON TransactionItem.id = Transaction.transactionItemId;
+ERROR: 1060 (42S21): Duplicate column name 'id'
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > CREATE VIEW TransactionWithItems 
+                                                -> AS 
+                                                -> SELECT Transaction.*, TransactionItem.*, Transaction.id as tran_id, TransactionItem.id as tran_item_id
+                                                -> FROM Transaction
+                                                -> JOIN Transactionitem 
+                                                -> ON TransactionItem.id = Transaction.transactionItemId;
+ERROR: 1146 (42S02): Table '23771397_db.Transactionitem' doesn't exist
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > CREATE VIEW TransactionWithItems  AS  SELECT Transaction.*, TransactionItem.*, Transaction.id as tran_id, TransactionItem.id as tran_item_id FROM Transaction JOIN TransactionItem  ON TransactionItem.id = Transaction.transactionItemId;
+ERROR: 1060 (42S21): Duplicate column name 'id'
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SHOW TABLES
+                                                -> ;
++-----------------------+
+| Tables_in_23771397_db |
++-----------------------+
+| GstOnlyItems          |
+| Transaction           |
+| TransactionItem       |
++-----------------------+
+3 rows in set (0.0524 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > CREATE VIEW TransactionWithItems ASSELECT    Transaction.id AS tran_id,    -- Add other columns from Transaction table as needed    Transaction.*,    TransactionItem.id AS tran_item_id,    -- Add other columns from TransactionItem table as needed    TransactionItem.*FROM    TransactionJOIN    TransactionItem ON TransactionItem.id = Transaction.transactionItemId;
+                                                -> 
+                                                -> ;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'ASSELECT    Transaction.id AS tran_id,    -- Add other columns from Transaction ' at line 1
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > CREATE VIEW TransactionWithItems 
+                                                -> AS 
+                                                -> SELECT 
+                                                -> Transaction^C
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > ^C
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > ^C
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > ^C
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > ^C
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > CREATE VIEW TransactionWithItems  AS  SELECT Transaction.*, Transaction.id as tran_id, TransactionItem.id as tran_item_id FROM Transaction JOIN TransactionItem ON TransactionItem.id = Transaction.transactionItemId;
+Query OK, 0 rows affected (0.0681 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SHOW TABLES;
++-----------------------+
+| Tables_in_23771397_db |
++-----------------------+
+| GstOnlyItems          |
+| Transaction           |
+| TransactionItem       |
+| TransactionWithItems  |
++-----------------------+
+4 rows in set (0.0594 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SHOW TABLES;
++-----------------------+
+| Tables_in_23771397_db |
++-----------------------+
+| GstOnlyItems          |
+| Transaction           |
+| TransactionItem       |
+| TransactionWithItems  |
++-----------------------+
+4 rows in set (0.0665 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > CREATE VIEW JanuaryTransactions 
+                                                -> AS
+                                                -> SELECT * FROM TransacitonItem
+                                                -> WHERE month(date) = 1;
+ERROR: 1146 (42S02): Table '23771397_db.TransacitonItem' doesn't exist
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > CREATE VIEW JanuaryTransactions  AS SELECT * FROM TransactionItem WHERE month(date) = 1;
+ERROR: 1054 (42S22): Unknown column 'date' in 'where clause'
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > CREATE VIEW JanuaryTransactions  AS SELECT * FROM Transaction WHERE month(date) = 1;
+Query OK, 0 rows affected (0.0695 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT * FROM JanuaryTransactions;
++----+------------+---------------------+-------------------+
+| id | date       | customerName        | transactionItemId |
++----+------------+---------------------+-------------------+
+|  1 | 2022-01-01 | Example Corporation |                 4 |
++----+------------+---------------------+-------------------+
+1 row in set (0.0606 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > CREATE TABLE Locations (:id INT, name VARCHAR(255), geometry POINT);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ':id INT, name VARCHAR(255), geometry POINT)' at line 1
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > CREATE TABLE Locations (id INT PRIMARY KEY, name VARCHAR(255), geometry POINT);
+Query OK, 0 rows affected (0.0842 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SHOW TABLES;
++-----------------------+
+| Tables_in_23771397_db |
++-----------------------+
+| GstOnlyItems          |
+| JanuaryTransactions   |
+| Locations             |
+| Transaction           |
+| TransactionItem       |
+| TransactionWithItems  |
++-----------------------+
+6 rows in set (0.0600 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > INSERT INTO Locations VALUES
+                                                -> (1, "Perth", ST_GeomGromText('POINT(115.850 -31.950)')),
+                                                -> (2, "Joondalup", ST_GeomFrom^C
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > INSERT INTO Locations VALUES
+                                                -> (1, "Perth", ST_GeomFromText('POINT(115.850 -31.950)'));
+Query OK, 1 row affected (0.0629 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SHOW * FROM Locations;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* FROM Locations' at line 1
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT * FROM Locations;
++----+-------+---------------------------+
+| id | name  | geometry                  |
++----+-------+---------------------------+
+|  1 | Perth |        fffff�\@33333�?� |
++----+-------+---------------------------+
+1 row in set (0.0492 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > INSERT INTO Locations VALUES (1, "Joondalup", ST_GeomFromText('POINT(115.766 -31.745)'));
+ERROR: 1062 (23000): Duplicate entry '1' for key 'Locations.PRIMARY'
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > INSERT INTO Locations VALUES (2, "Joondalup", ST_GeomFromText('POINT(115.766 -31.745)'));
+Query OK, 1 row affected (0.0610 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > INSERT INTO Locations VALUES (3, "Mandurah", ST_GeomFromText('POINT(115.723 -32.523)'));
+Query OK, 1 row affected (0.0561 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > INSERT INTO Locations VALUES (4, "Armadale", ST_GeomFromText('POINT(116.015 -32.153)'));
+Query OK, 1 row affected (0.0603 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT * FROM Locations;
++----+-----------+---------------------------+
+| id | name      | geometry                  |
++----+-----------+---------------------------+
+|  1 | Perth     |        fffff�\@33333�?� |
+|  2 | Joondalup |        $�\@��Q��?� |
+|  3 | Mandurah  |        ��ʡE�\@m����B@� |
+|  4 | Armadale  |        )\��� ]@�$��@� |
++----+-----------+---------------------------+
+4 rows in set (0.0536 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT id, name, ST_AsText(geometry)
+                                                -> FROM Locations
+                                                -> WHERE ST_Distance_Sphere(geometry, ST_GeomFromText('POINT(115.822 -31.986)'))  <== 40*10000;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '<== 40*10000' at line 3
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT id, name, ST_AsText(geometry) FROM Locations WHERE ST_Distance_Sphere(geometry, ST_GeomFromText('POINT(115.822 -31.986)'))  < 40*10000;
++----+-----------+------------------------+
+| id | name      | ST_AsText(geometry)    |
++----+-----------+------------------------+
+|  1 | Perth     | POINT(115.85 -31.95)   |
+|  2 | Joondalup | POINT(115.766 -31.745) |
+|  3 | Mandurah  | POINT(115.723 -32.523) |
+|  4 | Armadale  | POINT(116.015 -32.153) |
++----+-----------+------------------------+
+4 rows in set (0.0932 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > SELECT id, name, ST_AsText(geometry) FROM Locations WHERE ST_Distance_Sphere(geometry, ST_GeomFromText('POINT(115.822 -31.986)'))  <= 40*10000;
++----+-----------+------------------------+
+| id | name      | ST_AsText(geometry)    |
++----+-----------+------------------------+
+|  1 | Perth     | POINT(115.85 -31.95)   |
+|  2 | Joondalup | POINT(115.766 -31.745) |
+|  3 | Mandurah  | POINT(115.723 -32.523) |
+|  4 | Armadale  | POINT(116.015 -32.153) |
++----+-----------+------------------------+
+4 rows in set (0.0492 sec)
+ MySQL  db.tris.id.au:3306 ssl  23771397_db  SQL > 

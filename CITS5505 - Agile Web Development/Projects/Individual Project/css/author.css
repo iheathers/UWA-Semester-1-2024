@@ -46,10 +46,9 @@
   text-align: center;
 }
 
-/* Animation to rotate the back layer of the profile */
-@keyframes rotate {
-  to{
-    transform: rotate(360deg);
-  }
+
+.author-section  a{
+  text-decoration: none;
 }
+
 
