@@ -1,0 +1,131 @@
+// Load nodes
+CALL apoc.import.csv(
+    [
+        {fileName: 'file:/club_node.csv', labels: ['Club']},
+        {fileName: 'file:/country_node.csv', labels: ['Country']},
+        {fileName: 'file:/player_node.csv', labels: ['Player']}
+    ],
+    [],
+    {}
+)
+
+MATCH (p:Player)
+SET p.player_id = toInteger(p.player_id)
+SET p.age = toInteger(p.age)
+SET p.height = toInteger(p.height)
+SET p.dob = date({ year: toInteger(substring(p.dob, 6, 4)), month: toInteger(substring(p.dob, 3, 2)), day: toInteger(substring(p.dob, 0, 2))})
+
+MATCH (c:Club)
+SET c.club_id = toInteger(c.club_id)
+
+MATCH (co:Country)
+SET co.country_id = toInteger(co.country_id)
+
+// Load relationships
+LOAD CSV WITH HEADERS FROM 'file:///rel_plays_for.csv' AS row
+MATCH (p:Player {player_id: toInteger(row.player_id)}), 
+      (c:Club {club_id: toInteger(row.club_id)})
+MERGE (p)-[:PLAYS_FOR]->(c)
+
+LOAD CSV WITH HEADERS FROM 'file:///rel_located_in.csv' AS row
+MATCH (c:Club {club_id: toInteger(row.club_id)}),
+    (y:Country {country_id: toInteger(row.club_country_id)})
+MERGE (c)-[:LOCATED_IN]->(y)
+
+LOAD CSV WITH HEADERS FROM 'file:///rel_from.csv' AS row
+MATCH (p:Player {player_id: toInteger(row.player_id)}),
+    (c:Country {country_id: toInteger(row.country_id)})
+MERGE (p)-[r:FROM]->(c)
+SET r.caps = toInteger(row.caps)
+SET r.intl_goals = toInteger(row.intl_goals)
+SET r.jersey_num = toInteger(row.jersey_num)
+
+// Queries
+MATCH (p:Player {player_id: 254166})-[f:FROM]->(:Country) 
+RETURN f.jersey_num
+
+MATCH (c:Club)-[l:LOCATED_IN]->(co:Country {country: "Australia"}) 
+RETURN c, l, co
+
+MATCH (p:Player {player_id: 254166})-[:PLAYS_FOR]->(c:Club) 
+RETURN p, c
+
+MATCH (p:Player {player_id: 254166 }) 
+RETURN p.age
+
+MATCH (p:Player {player_id: 254166})-[:PLAYS_FOR]->(c:Club)-[:LOCATED_IN]->(co:Country) 
+RETURN co.country
+MATCH (p:Player {player_id: 254166})-[:PLAYS_FOR]->(c:Club)-[:LOCATED_IN]->(co:Country) 
+RETURN p, c, co
+
+MATCH (c:Club)<-[:PLAYS_FOR]-(p:Player)-[:FROM]->(co:Country {country: "Chile"}) 
+RETURN c
+
+MATCH (p:Player)-[r:PLAYS_FOR]->(c:Club {club: "Real Madrid CF"})
+RETURN c.club, p.name, p.age
+ORDER BY p.age ASC
+
+MATCH (p:Player {position: "Midfielder"} )-[f:FROM]->(c:Country {country: "Argentina"})
+RETURN p.name, p.position, f.caps, c.country
+ORDER BY f.caps DESC
+
+MATCH (p:Player )-[f:FROM]->(c:Country {country: "Argentina"})
+WHERE date(p.dob).year = 1980
+RETURN p.name,  date(p.dob).year, f.caps
+ORDER BY f.caps DESC
+
+MATCH (club:Club)<-[:PLAYS_FOR]-(p:Player)-[r:FROM]->(c:Country {country: "Argentina"})
+WITH club, collect({player: p, intlGoals: r.intl_goals}) AS players
+WHERE size(players) > 1
+UNWIND players AS playerData
+RETURN club.club AS club, playerData.player.name AS name, playerData.intlGoals AS intl_goals
+ORDER BY club.club, intl_goals DESC
+
+MATCH (p:Player)
+WHERE date(p.dob).year = 1987
+RETURN COUNT(p) AS number_of_players_born_in_1987
+
+MATCH (p:Player)
+WITH p.age AS age, count(p) AS playerCount
+RETURN age, playerCount
+ORDER BY playerCount DESC
+LIMIT 1 
+
+MATCH p=(c1:Club {club: "Liverpool FC"})-[*2..3]-(c2:Club {club: "Arsenal FC"}) 
+RETURN p
+
+MATCH (p:Player)-[r:FROM]->(c:Country)
+WITH c.country AS country, avg(r.intl_goals) AS avgIntlGoals
+RETURN country, round(avgIntlGoals, 2) AS avgIntlGoalsRounded
+ORDER BY avgIntlGoalsRounded DESC
+LIMIT 5
+
+MATCH (p1:Player)-[r1:FROM]->(c:Country)<-[r2:FROM]-(p2:Player)
+WHERE p1.position <> p2.position AND p1.player_id < p2.player_id
+WITH c.country AS country, p1, p2, ABS(r1.caps - r2.caps) AS capDifference
+ORDER BY country, capDifference
+// Find the minimum cap difference for each country
+WITH country, collect({Player1: p1, Player2: p2, capDifference: capDifference}) AS playerPairs, min(capDifference) AS minCapDiff
+// Filter to include only pairs with the minimum cap difference
+UNWIND playerPairs AS pair
+WITH country, pair
+WHERE pair.capDifference = minCapDiff
+RETURN country, pair.Player1.name AS Player1, pair.Player1.position AS Position1, pair.Player2.name AS Player2, pair.Player2.position AS Position2, pair.capDifference AS CapDifference
+ORDER BY country
+
+MATCH (p:Player)-[f:FROM]->(c:Country)
+WHERE f.caps > 0  // Filter out players with zero caps
+RETURN p.name, round(f.intl_goals * 1.0 / f.caps, 2) AS avgGoalsPerMatch
+ORDER BY avgGoalsPerMatch DESC
+LIMIT 10
+
+MATCH (p:Player)-[:PLAYS_FOR]->(c:Club)
+RETURN c.club, COUNT(p) AS playerCount
+ORDER BY playerCount DESC
+LIMIT 1
+
+MATCH (cCo:Country {country: "England"})<-[:LOCATED_IN]-(cl:Club)<-[:PLAYS_FOR]-(p:Player)-[:FROM]->(fCo:Country {country: "Spain"})
+RETURN p, cl, cCo, fCo
+
+MATCH (p1:Player {name: "SON Heungmin"}), (p2:Player {name: "Haris MEDUNJANIN"}), path = shortestPath((p1)-[*]-(p2))
+RETURN path
